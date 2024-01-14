@@ -3,7 +3,6 @@ package com.Exam.Backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import org.hibernate.engine.internal.Cascade;
 
 import java.util.HashSet;
 import java.util.Set;
