@@ -5,6 +5,9 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../../services/user.service';
+
+
 @Component({
   selector: 'app-signup',
   standalone: true,
@@ -13,23 +16,37 @@ import { CommonModule } from '@angular/common';
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit{
-  constructor(){}
+  constructor(private usrService:UserService){}
 
   public user={
     username:'',
-    firstname:'',
-    lastname:'',
+    firstName:'',
+    lastName:'',
     password:'',
     email:'',
-    phno:''
-  }
+    phone:''
+  };
 
   ngOnInit(): void {
      
   }
   formSubmit(){
-    alert("submitted");
+    this.usrService.addUser(this.user).subscribe(
+      (data)=>{
+        alert("Succes");
+
+      },
+      (error)=>{
+        alert("error");
+      }
+    );
+
+  
   }
+
+ 
+
+  
 
 
 }
