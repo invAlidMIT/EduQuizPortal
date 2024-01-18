@@ -6,8 +6,6 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-// import { SignupComponent } from './pages/signup/signup.component';
-
 
 @Component({
     selector: 'app-root',

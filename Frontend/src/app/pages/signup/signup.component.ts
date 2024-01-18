@@ -6,17 +6,18 @@ import {MatButtonModule} from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
-
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatInputModule,MatFormFieldModule,MatIconModule,MatButtonModule,FormsModule,CommonModule],
+  imports: [MatInputModule,MatFormFieldModule,MatIconModule,MatButtonModule,FormsModule,CommonModule,MatSnackBarModule],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
 export class SignupComponent implements OnInit{
-  constructor(private usrService:UserService){}
+  constructor(private usrService:UserService,private snack:MatSnackBar){}
 
   public user={
     username:'',
@@ -31,13 +32,21 @@ export class SignupComponent implements OnInit{
      
   }
   formSubmit(){
+
+    if(this.user.username==null || this.user.username==''){
+        this.snack.open("Username is required","OK",{
+          duration:2000
+        });
+    }
     this.usrService.addUser(this.user).subscribe(
-      (data)=>{
-        alert("Succes");
+      (data:any)=>{
+      Swal.fire("SuccesFully added user "+data.username);
 
       },
       (error)=>{
-        alert("error");
+       this.snack.open("Something is wrong! ","OK",{
+        duration:2000
+       })
       }
     );
 

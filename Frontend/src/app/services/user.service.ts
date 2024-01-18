@@ -8,11 +8,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 })
 export class UserService {
 
-
-  constructor(private http:HttpClient) { 
-
-
-  }
+  constructor(private http:HttpClient) { }
 
   public addUser(user:any):Observable<any>{
     return this.http.post(`${baseUrl}/user/`,user);
