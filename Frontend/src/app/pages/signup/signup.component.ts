@@ -8,11 +8,13 @@ import { CommonModule } from '@angular/common';
 import { UserService } from '../../services/user.service';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
+import {MatCardModule} from '@angular/material/card';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [MatInputModule,MatFormFieldModule,MatIconModule,MatButtonModule,FormsModule,CommonModule,MatSnackBarModule],
+  imports: [MatInputModule,MatFormFieldModule,MatIconModule,MatButtonModule,FormsModule,CommonModule,MatSnackBarModule,MatCardModule,NavbarComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })
