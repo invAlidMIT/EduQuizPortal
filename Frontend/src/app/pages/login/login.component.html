@@ -2,22 +2,24 @@
 <div class="bootstrap-wrapper">
     <div class="container" style="margin-top: 160px;">
         <div class="row">
-            
             <div class="col-md-6 offset-md-3">
                 <mat-card class="card">
                 <h1 class="text-center">Login</h1>
-                <form >
+                <form (ngSubmit)="submit()">
                     <mat-form-field class="full-width" 
                     appearance="outline">
                         <mat-label>username</mat-label>
                         <input required
                         name="username"
+                        [(ngModel)]="loginDetails.username"
                         matInput placeholder="Enter Here">   
                     </mat-form-field>
                    <mat-form-field class="full-width"
                     appearance="outline">
                         <mat-label>password</mat-label>
-                        <input required name="password"
+                        <input required
+                        [(ngModel)]="loginDetails.password" 
+                        name="password"
                          type="password" matInput 
                         placeholder="Enter Here">
                     </mat-form-field>

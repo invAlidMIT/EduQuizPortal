@@ -17,6 +17,7 @@ import com.Exam.Backend.Model.*;
 import com.Exam.Backend.Repository.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/auth")
 public class authController {
 
