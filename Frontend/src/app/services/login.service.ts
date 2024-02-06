@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import baseUrl from './helper';
 
@@ -10,7 +10,9 @@ export class LoginService {
   constructor(private http:HttpClient) { }
 
   public getCurrentUser(){
-    return this.http.get(`${baseUrl}/auth/currentUser`);
+    const token = this.getToken();
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/auth/currentUser`, { headers });
   }
 
 
