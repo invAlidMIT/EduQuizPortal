@@ -10,11 +10,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import com.Exam.Backend.Model.*;
+import com.Exam.Backend.Service.userDetailsService;
 
 import com.Exam.Backend.Repository.*;
+
+import java.security.Principal;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,7 +24,7 @@ import com.Exam.Backend.Repository.*;
 public class authController {
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private userDetailsService userDetailsService;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -72,21 +74,13 @@ public class authController {
     }
 
 
-//    @PostMapping("/create")
-//    public User createUser(User user, Set<userRole> userRoles) throws Exception {
-//        User localUser=userRepository.findByUsername(user.getUsername());
-//        if(localUser!=null){
-//            System.out.println("User is already present!");
-//            throw new Exception("User is already present!");
-//        }else{
-//            for(userRole userRole:userRoles){
-//                roleRepository.save(userRole.getRole());
-//            }
-//            user.getUserRoles().addAll(userRoles);
-//            localUser=this.userRepository.save(user);
-//        }
-//        return localUser;
-//    }
+    @GetMapping("/currentUser")
+    public UserDetails getCurrentUser(Principal principal){
+        return this.userDetailsService.loadUserByUsername(principal.getName());
+    }
+
+
+
 
 
 }

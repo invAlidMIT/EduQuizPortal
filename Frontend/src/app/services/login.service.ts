@@ -9,6 +9,10 @@ export class LoginService {
 
   constructor(private http:HttpClient) { }
 
+  public getCurrentUser(){
+    return this.http.get(`${baseUrl}/auth/currentUser`);
+  }
+
 
   public tokenGeneration(loginDetails:any){
 

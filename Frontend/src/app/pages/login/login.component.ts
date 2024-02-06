@@ -9,6 +9,8 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
+import { HttpHeaders } from '@angular/common/http';
+import baseUrl from '../../services/helper';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,10 @@ export class LoginComponent {
     username:'',
     password:''
   }
+  http: any;
+  router: any;
+  errorMessage: string | undefined;
+
 
   constructor(private snackBar:MatSnackBar,private loginService:LoginService){
 
@@ -42,8 +48,15 @@ export class LoginComponent {
   this.loginService.tokenGeneration(this.loginDetails).subscribe(
     (data:any)=>{
     console.log("Suceess");
-    console.log(data);
+    console.log(data.token);
+  this.loginService.tokenInLocalStorage(data.token);
+
+    this.loginService.getCurrentUser().subscribe((user:any)=>{
+      this.loginService.setUser(user);
+      console.log(user);
+    })
   },
+  
   (error)=>{
     console.log("error occured !!");
     console.log(error);
