@@ -11,6 +11,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
 import { HttpHeaders } from '@angular/common/http';
 import baseUrl from '../../services/helper';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -26,11 +27,10 @@ export class LoginComponent {
     password:''
   }
   http: any;
-  router: any;
   errorMessage: string | undefined;
 
 
-  constructor(private snackBar:MatSnackBar,private loginService:LoginService){
+  constructor(private snackBar:MatSnackBar,private loginService:LoginService,private router:Router){
 
   }
 
@@ -54,12 +54,25 @@ export class LoginComponent {
     this.loginService.getCurrentUser().subscribe((user:any)=>{
       this.loginService.setUser(user);
       console.log(user);
+
+      if(this.loginService.getUserRole()=="Normal"){
+        this.router.navigate(['/userDashboard']);
+      }
+      else if(this.loginService.getUserRole()=="Admin"){
+        this.router.navigate(['/adminDashboard']);
+      }
+      else{
+       this.loginService.logout();
+      }
     })
   },
   
   (error)=>{
     console.log("error occured !!");
     console.log(error);
+    this.snackBar.open("Invalid Credentials!!",'',{
+      duration:3000
+    })
   }
   );
   
