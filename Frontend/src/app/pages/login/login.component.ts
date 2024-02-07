@@ -9,8 +9,6 @@ import { NavbarComponent } from '../../components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { LoginService } from '../../services/login.service';
-import { HttpHeaders } from '@angular/common/http';
-import baseUrl from '../../services/helper';
 import { Router } from '@angular/router';
 
 @Component({
