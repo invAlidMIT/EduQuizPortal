@@ -38,10 +38,13 @@ public class authController {
     @Autowired
     private roleRepository roleRepository;
 
+
     private Logger logger= LoggerFactory.getLogger(authController.class);
 
     @PostMapping("/login")
     public ResponseEntity<jwtResponse> login(@RequestBody jwtRequest request) {
+
+
 
         this.doAuthenticate(request.getUsername(), request.getPassword());
 
@@ -56,6 +59,7 @@ public class authController {
     }
 
     private void doAuthenticate(String username, String password) {
+
 
         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(username, password);
         try {

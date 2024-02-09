@@ -9,7 +9,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
   const login=inject(LoginService);
   const router=inject(Router);
 
-  if( login.isUserLoggedIn() && login.getUserRole()=="Admin"){
+  if( login.isUserLoggedIn() && login.getUserRole()=="ADMIN"){
     return true;
   }
   else{

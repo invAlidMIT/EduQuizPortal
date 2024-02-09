@@ -52,11 +52,12 @@ export class LoginComponent {
     this.loginService.getCurrentUser().subscribe((user:any)=>{
       this.loginService.setUser(user);
       console.log(user);
+      console.log(this.loginService.getUserRole());
 
-      if(this.loginService.getUserRole()=="Normal"){
+      if(this.loginService.getUserRole()=="NORMAL"){
         this.router.navigate(['/userDashboard']);
       }
-      else if(this.loginService.getUserRole()=="Admin"){
+      else if(this.loginService.getUserRole()=="ADMIN"){
         this.router.navigate(['/adminDashboard']);
       }
       else{
