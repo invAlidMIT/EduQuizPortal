@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card *ngIf="user">
     <h3>Profile</h3>
     <mat-card-content>
         <div class="bootstrap-wrapper">
@@ -7,7 +7,7 @@
                 <div class="container text-center">
                     <img src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png" alt="profile"
                     class="profile-pic">
-
+                       
                     <h3 class="mt-4">Amit Hegde</h3>
                 </div>
 
@@ -18,27 +18,27 @@
                       <table class="table text-center">
                         <tr>
                             <td>Username</td>
-                            <td>Amit</td>
+                            <td>{{user.username}}</td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="user.Firstname">
                             <td>Firstname</td>
-                            <td>Amit</td>
+                            <td>{{user.Firstname}}</td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="user.Lastname">
                             <td>Lastname</td>
-                            <td>Amit</td>
+                            <td>{{user.Lastname}}</td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="user.Email">
                             <td>Email</td>
-                            <td>Amit</td>
+                            <td>{{user.Email}}</td>
                         </tr>
-                        <tr>
+                        <tr *ngIf="user.Phone">
                             <td>Phone</td>
-                            <td>Amit</td>
+                            <td>{{user.Phone}}</td>
                         </tr>
                         <tr>
                             <td>Role</td>
-                            <td>Amit</td>
+                            <td>{{user.authorities[0].authority}}</td>
                         </tr>
                       </table>
                     </div>
@@ -48,4 +48,8 @@
 
 
     </mat-card-content>
+    <mat-card-actions class="mat-card-actions">
+        <button mat-raised-button color="primary" style="margin-right: 12px;">Update</button>
+        <button mat-raised-button color="warn">Share</button>
+    </mat-card-actions>
 </mat-card>

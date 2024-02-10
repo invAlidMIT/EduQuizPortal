@@ -16,3 +16,13 @@
     border: 0.5px solid blue;
     
 }
+
+.mat-card-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
