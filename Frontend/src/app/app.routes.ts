@@ -7,6 +7,7 @@ import { AdminDashboardComponent } from './pages/admin/admin-dashboard/admin-das
 import { adminGuard } from './services/admin.guard';
 import { userGuard } from './services/user.guard';
 import { ProfileComponent } from './profile/profile.component';
+import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 
 
 export const routes: Routes = [
@@ -36,6 +37,10 @@ export const routes: Routes = [
         component:AdminDashboardComponent,
        
         children:[
+            {
+                path:'',
+                component:WelcomeComponent
+            },
             {
                 path:'profile',
                 component:ProfileComponent
