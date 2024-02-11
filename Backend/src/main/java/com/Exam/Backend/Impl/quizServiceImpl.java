@@ -32,7 +32,7 @@ public class quizServiceImpl implements quizService {
     public void deleteQuiz(Long quizId) {
         Quiz quiz=new Quiz();
         quiz.setQid(quizId);
-        this.quizRepository.delete(quiz);
+        this.quizRepository.deleteById(quizId);
 
     }
 

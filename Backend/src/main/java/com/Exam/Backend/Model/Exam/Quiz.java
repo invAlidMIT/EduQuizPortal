@@ -2,8 +2,8 @@ package com.Exam.Backend.Model.Exam;
 
 import jakarta.persistence.*;
 
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "quiz")
@@ -27,7 +27,7 @@ public class Quiz {
     private Category category;
 
     @OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
-    private Set<Question> questions=new LinkedHashSet<>();
+    private List<Question> questions=new ArrayList<>();
 
     public Quiz() {
     }
@@ -86,5 +86,13 @@ public class Quiz {
 
     public void setCategory(Category category) {
         this.category = category;
+    }
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
     }
 }
