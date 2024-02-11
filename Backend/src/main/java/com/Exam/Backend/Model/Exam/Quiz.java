@@ -11,7 +11,7 @@ public class Quiz {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int qid;
+    private long qid;
 
     private String title;
 
@@ -32,11 +32,11 @@ public class Quiz {
     public Quiz() {
     }
 
-    public int getQid() {
+    public long getQid() {
         return qid;
     }
 
-    public void setQid(int qid) {
+    public void setQid(long qid) {
         this.qid = qid;
     }
 
