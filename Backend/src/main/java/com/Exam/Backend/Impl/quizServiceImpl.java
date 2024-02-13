@@ -24,7 +24,7 @@ public class quizServiceImpl implements quizService {
     }
 
     @Override
-    public List<Quiz> getAllQuizes() {
+    public List<Quiz> getAllQuizzes() {
         return this.quizRepository.findAll();
     }
 

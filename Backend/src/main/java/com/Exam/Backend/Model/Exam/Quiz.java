@@ -1,5 +1,6 @@
 package com.Exam.Backend.Model.Exam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -27,6 +28,7 @@ public class Quiz {
     private Category category;
 
     @OneToMany(mappedBy = "quiz",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Question> questions=new ArrayList<>();
 
     public Quiz() {

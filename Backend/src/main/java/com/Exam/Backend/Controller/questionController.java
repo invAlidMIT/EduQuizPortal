@@ -5,6 +5,7 @@ import com.Exam.Backend.Model.Exam.Quiz;
 import com.Exam.Backend.Service.questionService;
 import com.Exam.Backend.Service.quizService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
@@ -12,8 +13,8 @@ import java.util.Collections;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/question")
+@CrossOrigin(origins = "http://localhost:4200")
 public class questionController {
 
     @Autowired
@@ -23,8 +24,8 @@ public class questionController {
     private quizService quizService;
 
     @PostMapping("/")
-    public ResponseEntity<?> addQuestion(@RequestBody Question question){
-        return ResponseEntity.ok(this.questionService.addQuestion(question));
+    public Question addQuestion(@RequestBody Question question){
+        return this.questionService.addQuestion(question);
     }
 
     @GetMapping("/")
@@ -47,18 +48,25 @@ public class questionController {
         this.questionService.deleteQuestion(id);
     }
 
-    @GetMapping("/quiz/qId")
-    public ResponseEntity<?> getAllQuestionsOfQuiz(@PathVariable Long id){
+    @GetMapping("/quiz/{qId}")
+    public ResponseEntity<List<Question>> getAllQuestionsOfQuiz(@PathVariable Long qId) {
+        try {
+            Quiz quiz = this.quizService.getQuizById(qId);
+            List<Question> questions = quiz.getQuestions();
 
-        Quiz quiz=this.quizService.getQuizById(id);
-        List<Question> questions=quiz.getQuestions();
-        List list=new ArrayList(questions);
-        if(list.size()> Integer.parseInt(quiz.getNumberOfQuestions())){
-            list=list.subList(0,Integer.parseInt(quiz.getNumberOfQuestions()+1));
+            if (questions.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
+                questions = questions.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()) + 1);
+            }
+
+            Collections.shuffle(questions);
+            return ResponseEntity.ok(questions);
+        } catch (Exception e) {
+            // Log the exception for debugging purposes
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        Collections.shuffle(list);
-        return ResponseEntity.ok(list);
     }
+
 
 
 

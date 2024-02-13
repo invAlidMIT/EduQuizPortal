@@ -1,5 +1,6 @@
 package com.Exam.Backend.Model.Exam;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -17,6 +18,7 @@ public class Question {
     private String answer;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnore
     private Quiz quiz;
 
     public Question() {

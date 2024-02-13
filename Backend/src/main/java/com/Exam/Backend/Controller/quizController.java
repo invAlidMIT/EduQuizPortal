@@ -9,21 +9,21 @@ import com.Exam.Backend.Service.quizService;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/quiz")
+@CrossOrigin(origins = "http://localhost:4200")
 public class quizController {
 
     @Autowired
     private quizService quizService;
 
     @PostMapping("/")
-    public ResponseEntity<?> addQuiz(@RequestBody Quiz quiz){
-        return ResponseEntity.ok(this.quizService.addQuiz(quiz));
+    public Quiz addQuiz(@RequestBody Quiz quiz){
+        return this.quizService.addQuiz(quiz);
     }
 
     @GetMapping("/")
-    public List<Quiz> getAllQuizes(){
-        return this.quizService.getAllQuizes();
+    public ResponseEntity<?> getAllQuizzes(){
+        return ResponseEntity.ok(this.quizService.getAllQuizzes());
     }
 
     @GetMapping("/{qid}")

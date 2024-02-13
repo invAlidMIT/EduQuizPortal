@@ -8,7 +8,7 @@ public interface quizService {
 
     public Quiz addQuiz(Quiz quiz);
     public Quiz updateQuiz(Quiz quiz);
-    public List<Quiz> getAllQuizes();
+    public List<Quiz> getAllQuizzes();
     public void deleteQuiz(Long quizId);
     public Quiz getQuizById(Long quizId);
 }
