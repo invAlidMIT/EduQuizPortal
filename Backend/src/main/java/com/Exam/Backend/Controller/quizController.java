@@ -31,9 +31,9 @@ public class quizController {
         return this.quizService.getQuizById(qid);
     }
 
-    @PutMapping("/")
-    public Quiz updateQuiz(@RequestBody Quiz quiz){
-        return this.quizService.updateQuiz(quiz);
+    @PutMapping("/{id}")
+    public Quiz updateQuiz(@PathVariable Long id,@RequestBody Quiz quiz) throws Exception {
+        return this.quizService.updateQuiz(id,quiz);
     }
 
     @DeleteMapping("/{id}")

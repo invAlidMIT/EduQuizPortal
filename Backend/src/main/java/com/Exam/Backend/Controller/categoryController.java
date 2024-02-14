@@ -32,9 +32,9 @@ public class categoryController {
         return this.categoryService.getCategoryById(id);
     }
 
-    @PutMapping("/")
-    public Category updateCategory(@RequestBody Category category){
-        return this.categoryService.updateCategory(category);
+    @PutMapping("/{id}")
+    public Category updateCategory(@PathVariable Long id,@RequestBody Category category) throws Exception {
+        return this.categoryService.updateCategory(id,category);
     }
 
     @DeleteMapping("/{id}")
