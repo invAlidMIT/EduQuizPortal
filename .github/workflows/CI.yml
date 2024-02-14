@@ -1,5 +1,4 @@
 name: CI
-
 on:
   push:
     branches:
@@ -8,7 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -41,15 +39,15 @@ jobs:
       - name: Start MySQL server
         run: sudo systemctl start mysql
 
-      - name: Set up MySQL
+      - name: Set up MySQL (with environment variables)
         run: |
+          # Use environment variables for sensitive information
           sudo apt-get update
           sudo apt-get install mysql-server -y
-          sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY 'password';"
+          sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';"
           sudo mysql -e "GRANT ALL PRIVILEGES ON exam_management_system.* TO 'ems_user'@'localhost';"
           sudo mysql -e "FLUSH PRIVILEGES"
           sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
-          
 
       - name: Set up Maven
         uses: actions/setup-java@v2
@@ -62,3 +60,5 @@ jobs:
 
       - name: Run Spring Boot Tests
         run: ./mvnw test
+
+      # ... other post-build steps
