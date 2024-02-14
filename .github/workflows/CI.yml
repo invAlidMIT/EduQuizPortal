@@ -45,9 +45,11 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install mysql-server -y
-          sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
           sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY 'password';"
           sudo mysql -e "GRANT ALL PRIVILEGES ON exam_management_system.* TO 'ems_user'@'localhost';"
+          sudo mysql -e "FLUSH PRIVILEGES"
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
+          
 
       - name: Set up Maven
         uses: actions/setup-java@v2
