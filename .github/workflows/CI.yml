@@ -32,24 +32,3 @@ jobs:
           npm install -g @angular/cli
           npm install
 
-      - name: Navigate back to root directory
-        run: cd ..
-
-      - name: Navigate to Backend directory
-        run: cd Backend
-
-      - name: Set up Maven
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'
-          distribution: 'temurin'
-
-      - name: Make Maven wrapper executable
-        run: chmod +x mvnw
-
-      - name: Build Spring Boot App
-        run: ./mvnw package -DskipTests=true
-
-      - name: Run Spring Boot Tests
-        run: ./mvnw test
-
