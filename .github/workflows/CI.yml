@@ -8,10 +8,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
-      MYSQL_USER: ems_user
-      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
 
     steps:
       - name: Checkout code
@@ -44,15 +40,6 @@ jobs:
 
       - name: Start MySQL server
         run: sudo systemctl start mysql
-
-      - name: Set up MySQL (with environment variables)
-        run: |
-          sudo apt-get update
-          sudo apt-get install mysql-server -y
-          sudo mysql -e "CREATE USER IF NOT EXISTS '${{ env.MYSQL_USER }}'@'localhost' IDENTIFIED BY '${{ env.MYSQL_PASSWORD }}';"
-          sudo mysql -e "GRANT ALL PRIVILEGES ON exam_management_system.* TO '${{ env.MYSQL_USER }}'@'localhost';"
-          sudo mysql -e "FLUSH PRIVILEGES"
-          sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
 
       - name: Set up Maven
         uses: actions/setup-java@v2
