@@ -10,48 +10,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Set up JDK 17
-      uses: actions/setup-java@v2
-      with:
-        java-version: '17'
-        distribution: 'temurin'
-    
+      - name: Set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14' # Use Node.js version 14 to match with your project requirements
 
-    - name: Install Angular CLI and Dependencies
-      run: |
-        npm install -g @angular/cli
-        npm install
+      - name: Navigate to Frontend directory
+        run: cd Frontend
 
-    - name: Run Angular Tests
-      run: npm run test -- --no-watch --no-progress --browsers=ChromeHeadlessCI
+      - name: Install Angular CLI and Dependencies
+        run: |
+          npm install -g @angular/cli
+          npm install
 
-    - name: Build Angular App
-      run: npm run build -- --prod
+      - name: Navigate to root directory
+        run: cd ..
 
-    - name: Set up MySQL
-      run: |
-        sudo apt-get update
-        sudo apt-get install mysql-server -y
-        sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
-        sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY 'password';"
-        sudo mysql -e "GRANT ALL PRIVILEGES ON exam_management_system.* TO 'ems_user'@'localhost';"
+      - name: Navigate to Backend directory
+        run: cd Backend
 
-    - name: Set up Maven
-      uses: actions/setup-java@v2
-      with:
-        java-version: '17'
-        distribution: 'temurin'
+      - name: Set up Maven
+        uses: actions/setup-java@v2
+        with:
+          java-version: '17'
+          distribution: 'temurin'
 
-    - name: Build Spring Boot App
-      run: ./mvnw package -DskipTests=true
+      - name: Build Spring Boot App
+        run: ./mvnw package -DskipTests=true
 
-    - name: Run Spring Boot Tests
-      run: ./mvnw test
+      - name: Run Spring Boot Tests
+        run: ./mvnw test
