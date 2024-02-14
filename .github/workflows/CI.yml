@@ -1,4 +1,5 @@
 name: CI
+
 on:
   push:
     branches:
@@ -7,6 +8,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      MYSQL_ROOT_PASSWORD: ${{ secrets.MYSQL_ROOT_PASSWORD }}
+      MYSQL_PASSWORD: ${{ secrets.MYSQL_PASSWORD }}
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -41,7 +46,7 @@ jobs:
 
       - name: Set up MySQL (with environment variables)
         run: |
-          # Use environment variables for sensitive information
+    
           sudo apt-get update
           sudo apt-get install mysql-server -y
           sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY '$MYSQL_PASSWORD';"
