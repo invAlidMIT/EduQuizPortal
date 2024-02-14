@@ -18,6 +18,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'amazon-corretto'
+        java-version-selector: '11.0.15'
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -48,6 +49,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'amazon-corretto'
+        java-version-selector: '11.0.15'
 
     - name: Build Spring Boot App
       run: ./mvnw package -DskipTests=true
