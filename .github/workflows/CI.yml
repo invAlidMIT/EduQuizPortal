@@ -47,7 +47,6 @@ jobs:
 
       - name: Set up MySQL (with environment variables)
         run: |
-          # Use environment variables for sensitive information
           sudo apt-get update
           sudo apt-get install mysql-server -y
           sudo mysql -e "CREATE USER IF NOT EXISTS '${{ env.MYSQL_USER }}'@'localhost' IDENTIFIED BY '${{ env.MYSQL_PASSWORD }}';"
@@ -67,4 +66,3 @@ jobs:
       - name: Run Spring Boot Tests
         run: ./mvnw test
 
-    
