@@ -38,9 +38,9 @@ public class questionController {
         return this.questionService.getQuestionById(id);
     }
 
-    @PutMapping("/")
-    public Question updateQuestion(@RequestBody Question question){
-        return this.questionService.updateQuestion(question);
+    @PutMapping("/{id}")
+    public Question updateQuestion(@PathVariable Long id,@RequestBody Question question) throws Exception {
+        return this.questionService.updateQuestion(id,question);
     }
 
     @DeleteMapping("/{id}")

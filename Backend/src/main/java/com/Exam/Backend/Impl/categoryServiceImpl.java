@@ -6,6 +6,7 @@ import com.Exam.Backend.Repository.categoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class categoryServiceImpl implements categoryService {
@@ -19,8 +20,15 @@ public class categoryServiceImpl implements categoryService {
     }
 
     @Override
-    public Category updateCategory(Category category) {
-        return this.categoryRepository.save(category);
+    public Category updateCategory(Long id,Category category) throws Exception {
+        Optional<Category> category1=this.categoryRepository.findById(id);
+        if(category1.isPresent()){
+            Category category2=category1.get();
+            category2.setDescription(category.getDescription());
+            category2.setTitle(category.getTitle());
+            return this.categoryRepository.save(category2);
+        }
+        throw new Exception("Category not found!!");
     }
 
     @Override

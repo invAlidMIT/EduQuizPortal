@@ -8,6 +8,8 @@ import com.Exam.Backend.Repository.questionRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
 
 @Service
 public class questionServiceImpl implements questionService {
@@ -21,8 +23,20 @@ public class questionServiceImpl implements questionService {
     }
 
     @Override
-    public Question updateQuestion(Question question) {
-        return this.questionRepository.save(question);
+    public Question updateQuestion(Long id,Question question) throws Exception {
+        Optional<Question> question1=this.questionRepository.findById(id);
+        if(question1.isPresent()){
+            Question question2=question1.get();
+            question2.setImage(question.getImage());
+            question2.setContent(question.getContent());
+            question2.setAnswer(question.getAnswer());
+            question2.setOption1(question.getOption1());
+            question2.setOption2(question.getOption2());
+            question2.setOption3(question.getOption3());
+            question2.setOption4(question.getOption4());
+            return this.questionRepository.save(question2);
+        }
+        throw new Exception("Question Not Found!!");
     }
 
     @Override

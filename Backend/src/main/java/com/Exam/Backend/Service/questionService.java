@@ -8,7 +8,7 @@ import java.util.List;
 public interface questionService {
 
     public Question addQuestion(Question question);
-    public Question updateQuestion(Question question);
+    public Question updateQuestion(Long id,Question question) throws Exception;
     public List<Question> getAllQuestions();
     public Question getQuestionById(Long qId);
     public void deleteQuestion(Long qId);

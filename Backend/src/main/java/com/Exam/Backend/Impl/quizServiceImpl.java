@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class quizServiceImpl implements quizService {
@@ -19,8 +20,18 @@ public class quizServiceImpl implements quizService {
     }
 
     @Override
-    public Quiz updateQuiz(Quiz quiz) {
-        return this.quizRepository.save(quiz);
+    public Quiz updateQuiz(Long id,Quiz quiz) throws Exception {
+        Optional<Quiz> quiz1=this.quizRepository.findById(id);
+        if(quiz1.isPresent()){
+            Quiz quiz2=quiz1.get();
+            quiz2.setTitle(quiz.getTitle());
+            quiz2.setMaxMarks(quiz.getMaxMarks());
+            quiz2.setCategory(quiz.getCategory());
+            quiz2.setDescription(quiz.getDescription());
+            quiz2.setNumberOfQuestions(quiz.getNumberOfQuestions());
+            return this.quizRepository.save(quiz2);
+        }
+        throw new Exception("Quiz Not Found!!");
     }
 
     @Override
