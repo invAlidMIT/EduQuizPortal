@@ -38,6 +38,9 @@ jobs:
       - name: Navigate to Backend directory
         run: cd Backend
 
+      - name: Start MySQL server
+        run: sudo systemctl start mysql
+
       - name: Set up MySQL
         run: |
           sudo apt-get update
