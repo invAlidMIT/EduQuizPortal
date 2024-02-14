@@ -22,7 +22,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: '14' # Use Node.js version 14 to match with your project requirements
+          node-version: '14'
 
       - name: Navigate to Frontend directory
         run: cd Frontend
