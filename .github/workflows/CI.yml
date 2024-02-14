@@ -32,11 +32,19 @@ jobs:
           npm install -g @angular/cli
           npm install
 
-      - name: Navigate to root directory
+      - name: Navigate back to root directory
         run: cd ..
 
       - name: Navigate to Backend directory
         run: cd Backend
+
+      - name: Set up MySQL
+        run: |
+          sudo apt-get update
+          sudo apt-get install mysql-server -y
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS exam_management_system;"
+          sudo mysql -e "CREATE USER 'ems_user'@'localhost' IDENTIFIED BY 'password';"
+          sudo mysql -e "GRANT ALL PRIVILEGES ON exam_management_system.* TO 'ems_user'@'localhost';"
 
       - name: Set up Maven
         uses: actions/setup-java@v2
