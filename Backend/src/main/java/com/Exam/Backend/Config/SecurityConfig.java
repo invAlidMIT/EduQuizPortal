@@ -35,6 +35,7 @@ public class SecurityConfig {
                 .requestMatchers("/auth/currentUser").permitAll()
                 .requestMatchers("/user/").permitAll()
                 .requestMatchers("/category/").permitAll()
+                .requestMatchers("/quiz/").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().exceptionHandling(ex -> ex.authenticationEntryPoint(point))

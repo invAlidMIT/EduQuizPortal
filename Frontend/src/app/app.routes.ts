@@ -10,6 +10,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
+import { ViewQuizComponent } from './pages/admin/view-quiz/view-quiz.component';
 
 
 export const routes: Routes = [
@@ -54,6 +55,10 @@ export const routes: Routes = [
             {
                 path:'add-category',
                 component:AddCategoryComponent
+            },
+            {
+                path:'quiz',
+                component:ViewQuizComponent
             }
         ],
         canActivate:[adminGuard]
