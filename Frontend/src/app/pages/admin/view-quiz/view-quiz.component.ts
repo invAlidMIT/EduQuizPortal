@@ -17,7 +17,6 @@ import Swal from 'sweetalert2';
   styleUrl: './view-quiz.component.css'
 })
 export class ViewQuizComponent implements OnInit{
-
  
   quizzes=[
     {
@@ -42,10 +41,6 @@ export class ViewQuizComponent implements OnInit{
     (error)=>{
       Swal.fire('error occured','error');
       console.log(error);
-    }
-    
-    
-    );
+    });
   }
-
 }

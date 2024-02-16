@@ -11,6 +11,7 @@ import { WelcomeComponent } from './pages/admin/welcome/welcome.component';
 import { ViewCategoriesComponent } from './pages/admin/view-categories/view-categories.component';
 import { AddCategoryComponent } from './pages/admin/add-category/add-category.component';
 import { ViewQuizComponent } from './pages/admin/view-quiz/view-quiz.component';
+import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 
 
 export const routes: Routes = [
@@ -59,6 +60,10 @@ export const routes: Routes = [
             {
                 path:'quiz',
                 component:ViewQuizComponent
+            },
+            {
+                path:'add-quiz',
+                component:AddQuizComponent
             }
         ],
         canActivate:[adminGuard]

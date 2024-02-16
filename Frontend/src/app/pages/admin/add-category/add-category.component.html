@@ -12,9 +12,11 @@
                     </mat-form-field>
                     <mat-form-field class="w100" appearance="outline">
                         <mat-label>Description</mat-label>
-                        <input type="text" placeholder="enter Description"
+                        <textarea placeholder="enter Description"
                         [(ngModel)]="category.description"
+                        rows="10"
                         name="Description" matInput>
+                        </textarea>
                     </mat-form-field>
                     <div class="container text-center">
                         <button mat-raised-button color="primary">add</button>
