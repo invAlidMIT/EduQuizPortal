@@ -13,6 +13,7 @@ import { AddCategoryComponent } from './pages/admin/add-category/add-category.co
 import { ViewQuizComponent } from './pages/admin/view-quiz/view-quiz.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 
 
 export const routes: Routes = [
@@ -69,6 +70,9 @@ export const routes: Routes = [
             {
                 path:'update-quiz/:qid',
                 component:UpdateQuizComponent
+            },{
+                path:'view-questions/:id/:title',
+                component:ViewQuizQuestionsComponent
             }
         ],
         canActivate:[adminGuard]

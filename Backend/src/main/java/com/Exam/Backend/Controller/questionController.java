@@ -61,11 +61,19 @@ public class questionController {
             Collections.shuffle(questions);
             return ResponseEntity.ok(questions);
         } catch (Exception e) {
-            // Log the exception for debugging purposes
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+
+    @GetMapping("/quiz/all/{qId}")
+    public ResponseEntity<List<Question>> getAllQuestionsOfQuizAdmin(@PathVariable Long qId) {
+       Quiz quiz=new Quiz();
+       quiz.setQid(qId);
+       List<Question> questions=this.questionService.getQuestionsOfQuiz(quiz);
+       return  ResponseEntity.ok(questions);
+    }
+
 
 
 
