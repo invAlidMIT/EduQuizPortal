@@ -29,6 +29,7 @@ public class quizServiceImpl implements quizService {
             quiz2.setCategory(quiz.getCategory());
             quiz2.setDescription(quiz.getDescription());
             quiz2.setNumberOfQuestions(quiz.getNumberOfQuestions());
+            quiz2.setActive(quiz.isActive());
             return this.quizRepository.save(quiz2);
         }
         throw new Exception("Quiz Not Found!!");

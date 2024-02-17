@@ -61,8 +61,7 @@ export class ViewQuizComponent implements OnInit{
         Swal.fire("error", "error", "error");
       });
     })
-
-   
+    
   }
   
 

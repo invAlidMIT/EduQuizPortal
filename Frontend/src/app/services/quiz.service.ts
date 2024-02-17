@@ -24,4 +24,16 @@ export class QuizService {
 
     return this.http.delete(`${baseUrl}/quiz/${qid}`, { headers });
   }
+
+  public getQuiz(qid: any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/quiz/${qid}`, {headers});
+  }
+
+  public updateQuiz(qid:any,quiz:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.put(`${baseUrl}/quiz/${qid}`,quiz,{headers});
+  }
 }
