@@ -43,4 +43,20 @@ export class ViewQuizComponent implements OnInit{
       console.log(error);
     });
   }
+
+  deleteQuiz(qid: any){
+    // alert(qid);
+    this.quizService.deleteQuiz(qid)
+    .subscribe((data)=>{
+      Swal.fire("success","Quiz Deleted","success");
+    },
+    (error)=>{
+      Swal.fire("error","Error Occured!!","error");
+    }
+    );
+  }
+
+
+  
 }
+

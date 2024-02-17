@@ -40,10 +40,13 @@ public class quizServiceImpl implements quizService {
     }
 
     @Override
-    public void deleteQuiz(Long quizId) {
-        Quiz quiz=new Quiz();
-        quiz.setQid(quizId);
-        this.quizRepository.deleteById(quizId);
+    public void deleteQuiz(Long qid) throws Exception {
+        Optional<Quiz> quiz=this.quizRepository.findById(qid);
+        if(!quiz.isPresent())
+        {
+            throw new Exception("User not found with id "+qid);
+        }
+        this.quizRepository.deleteById(qid);
 
     }
 

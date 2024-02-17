@@ -6,7 +6,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Exam.Backend.Service.quizService;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/quiz")
@@ -17,27 +16,27 @@ public class quizController {
     private quizService quizService;
 
     @PostMapping("/")
-    public Quiz addQuiz(@RequestBody Quiz quiz){
+    public Quiz addQuiz(@RequestBody Quiz quiz) {
         return this.quizService.addQuiz(quiz);
     }
 
     @GetMapping("/")
-    public ResponseEntity<?> getAllQuizzes(){
+    public ResponseEntity<?> getAllQuizzes() {
         return ResponseEntity.ok(this.quizService.getAllQuizzes());
     }
 
     @GetMapping("/{qid}")
-    public Quiz getQuizById(@PathVariable Long qid){
+    public Quiz getQuizById(@PathVariable Long qid) {
         return this.quizService.getQuizById(qid);
     }
 
     @PutMapping("/{id}")
-    public Quiz updateQuiz(@PathVariable Long id,@RequestBody Quiz quiz) throws Exception {
-        return this.quizService.updateQuiz(id,quiz);
+    public Quiz updateQuiz(@PathVariable Long id, @RequestBody Quiz quiz) throws Exception {
+        return this.quizService.updateQuiz(id, quiz);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteQuiz(@PathVariable Long id){
-        this.quizService.deleteQuiz(id);
+    @DeleteMapping("/{qid}")
+    public void deleteQuiz(@PathVariable Long qid) throws Exception {
+        this.quizService.deleteQuiz(qid);
     }
 }

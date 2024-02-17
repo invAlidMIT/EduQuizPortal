@@ -11,7 +11,8 @@
         <button mat-stroked-button color="primary" style="margin-left: 5px;">Questions: {{quiz.numberOfQuestions}}</button>
         <button mat-stroked-button color="primary" style="margin-left: 5px;">Attemps </button>
         <button mat-flat-button color="primary" style="margin-left: 5px;">Update</button>
-    
+        <button (click)="deleteQuiz(quiz.qid)" mat-raised-button color="warn" style="margin-left: 5px;">Delete</button>
+
     </mat-card-actions>
 </mat-card>
 <div class="container text-center mt-4">
