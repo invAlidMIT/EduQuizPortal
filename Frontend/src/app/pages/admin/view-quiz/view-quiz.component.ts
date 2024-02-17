@@ -45,16 +45,15 @@ export class ViewQuizComponent implements OnInit{
   }
 
   deleteQuiz(qid: any){
-    // alert(qid);
     this.quizService.deleteQuiz(qid)
-    .subscribe((data)=>{
+    .subscribe((data) => {
       Swal.fire("success","Quiz Deleted","success");
     },
-    (error)=>{
-      Swal.fire("error","Error Occured!!","error");
-    }
-    );
+    (error) => {
+      Swal.fire("error", "error", "error");
+    });
   }
+  
 
 
   
