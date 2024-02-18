@@ -6,12 +6,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { CategoryService } from '../../../services/category.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
   standalone: true,
   imports: [MatCardModule,MatListModule,MatIconModule,MatButtonModule,
-  CommonModule],
+  CommonModule,RouterLink],
   templateUrl: './side-bar.component.html',
   styleUrl: './side-bar.component.css'
 })

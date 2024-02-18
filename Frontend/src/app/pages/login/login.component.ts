@@ -55,7 +55,7 @@ export class LoginComponent {
       console.log(this.loginService.getUserRole());
 
       if(this.loginService.getUserRole()=="NORMAL"){
-        this.router.navigate(['/userDashboard']);
+        this.router.navigate(['/userDashboard/0']);
       }
       else if(this.loginService.getUserRole()=="ADMIN"){
         this.router.navigate(['/adminDashboard']);
