@@ -14,6 +14,7 @@ import { ViewQuizComponent } from './pages/admin/view-quiz/view-quiz.component';
 import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
+import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 
 
 export const routes: Routes = [
@@ -73,6 +74,10 @@ export const routes: Routes = [
             },{
                 path:'view-questions/:id/:title',
                 component:ViewQuizQuestionsComponent
+            },
+            {
+                path:'add-question/:id/:title',
+                component:AddQuestionsComponent
             }
         ],
         canActivate:[adminGuard]

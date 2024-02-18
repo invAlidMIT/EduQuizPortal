@@ -9,12 +9,13 @@ import { CommonModule } from '@angular/common';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-view-quiz-questions',
   standalone: true,
   imports: [MatCardModule,MatListModule,MatIconModule,MatButtonModule,CommonModule
-  ,MatFormFieldModule,FormsModule,MatInputModule],
+  ,MatFormFieldModule,FormsModule,MatInputModule,RouterLink],
   templateUrl: './view-quiz-questions.component.html',
   styleUrl: './view-quiz-questions.component.css'
 })
