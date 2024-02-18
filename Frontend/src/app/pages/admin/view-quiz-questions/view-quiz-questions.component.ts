@@ -10,6 +10,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
+import Swal from 'sweetalert2';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-view-quiz-questions',
@@ -25,6 +27,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
   qTitle: any;
   questions=[
     {
+      qid:'',
       content:'',
       option1:'',
       option2:'',
@@ -38,7 +41,8 @@ export class ViewQuizQuestionsComponent implements OnInit {
     }
   ];
 
-  constructor(private route:ActivatedRoute,private questionService:QuestionService){}
+  constructor(private route:ActivatedRoute,private questionService:QuestionService,
+    private snack:MatSnackBar){}
 
   ngOnInit(): void {
    
@@ -53,6 +57,30 @@ export class ViewQuizQuestionsComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  public deleteQuestion(qid:any){
+    Swal.fire({
+      icon:'info',
+      confirmButtonText:'Delete',
+      showCancelButton:true,
+      title:'Are you sure ?'
+    }).then((result)=>{
+        if(result.isConfirmed){
+          this.questionService.deleteQuestion(qid).subscribe((data)=>{
+            this.snack.open("Question Deleted",'',{
+              duration:3000
+            });
+            this.questions=this.questions.filter((q)=>q.qid!=qid);
+          },
+          (error)=>{
+            this.snack.open("Error occured!!",'',{
+              duration:3000
+            })
+          }
+          )
+        }
+    })
   }
 
 }

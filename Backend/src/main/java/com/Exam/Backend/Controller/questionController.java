@@ -42,9 +42,9 @@ public class questionController {
         return this.questionService.updateQuestion(id,question);
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteQuestion(@PathVariable Long id){
-        this.questionService.deleteQuestion(id);
+    @DeleteMapping("/{qid}")
+    public void deleteQuestion(@PathVariable Long qid){
+        this.questionService.deleteQuestion(qid);
     }
 
     @GetMapping("/quiz/{qId}")

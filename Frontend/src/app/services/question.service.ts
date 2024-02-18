@@ -21,4 +21,10 @@ export class QuestionService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.post(`${baseUrl}/question/`,question,{headers});
   }
+
+  public deleteQuestion(qid:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${baseUrl}/question/${qid}`,{headers});
+  }
 }

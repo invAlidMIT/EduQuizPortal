@@ -28,6 +28,10 @@
                         </p>
                     </div>
                 </mat-card-content>
+                <mat-card-actions>
+                    <button mat-button color="primary">Update</button>
+                    <button (click)="deleteQuestion(q.qid)" mat-button color="warn" style="margin-left: 5px;">Delete</button>
+                </mat-card-actions>
             </mat-card>
             <div class="container text-center mt-4">
                 <button [routerLink]="'/adminDashboard/add-question/'+qId+'/'+qTitle" mat-raised-button color="primary">Add Question</button>
