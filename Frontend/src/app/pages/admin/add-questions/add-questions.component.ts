@@ -24,6 +24,7 @@ import Swal from 'sweetalert2';
 })
 export class AddQuestionsComponent implements OnInit {
 
+
   qId: any;
   qTitle:any;
   questions={
@@ -44,17 +45,6 @@ export class AddQuestionsComponent implements OnInit {
     this.qId=this.route.snapshot.params['id'];
     this.qTitle=this.route.snapshot.params['title'];
     this.questions.quiz.qid=this.qId;
-    // this.questions={
-    //   quiz:{
-    //     qid:this.qId
-    //   },
-    //   content:'',
-    //   option1:'',
-    //   option2:'',
-    //   option3:'',
-    //   option4:'',
-    //   answer:''
-    // }
   }
 
 
