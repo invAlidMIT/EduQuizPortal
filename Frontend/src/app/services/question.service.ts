@@ -13,6 +13,12 @@ export class QuestionService {
   public getQuestionsOfQuiz(qid:any){
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-    return this.http.get(`${baseUrl}/question/quiz/${qid}`,{headers});
+    return this.http.get(`${baseUrl}/question/quiz/all/${qid}`,{headers});
+  }
+
+  public addQuestion(question:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${baseUrl}/question/`,question,{headers});
   }
 }
