@@ -1,6 +1,5 @@
 <div class="bootstrap-wrapper">
     <div class="container-fliud">
-        <h2 class="mt-4 text-center">Available Quizzes</h2>
         <div class="row">
             <div class="col-md-4" *ngFor="let q of quizzes" >
                 <mat-card>
@@ -23,6 +22,15 @@
                         <button mat-button color="warn" style="margin-left: 2px;">Questions: {{q.numberOfQuestions}}</button>
 
                     </mat-card-actions>
+                </mat-card>
+                
+            </div>
+            <div class="col-md-12 text-center" *ngIf="quizzes.length==0">
+                <mat-card>
+                    <mat-card-content>
+                        <h2>No Quizzes Available For This Category!!</h2>
+                    </mat-card-content>
+                    
                 </mat-card>
             </div>
         </div>

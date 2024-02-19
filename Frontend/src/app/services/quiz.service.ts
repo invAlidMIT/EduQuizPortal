@@ -36,4 +36,10 @@ export class QuizService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.put(`${baseUrl}/quiz/${qid}`,quiz,{headers});
   }
+
+  public getQuizzesOfCategory(cid:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/quiz/category/${cid}`,{headers});
+  }
 }

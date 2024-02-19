@@ -1,10 +1,13 @@
 package com.Exam.Backend.Controller;
 
+import com.Exam.Backend.Model.Exam.Category;
 import com.Exam.Backend.Model.Exam.Quiz;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.Exam.Backend.Service.quizService;
+
+import java.util.List;
 
 
 @RestController
@@ -39,4 +42,13 @@ public class quizController {
     public void deleteQuiz(@PathVariable Long qid) throws Exception {
         this.quizService.deleteQuiz(qid);
     }
+
+    @GetMapping("/category/{cid}")
+    public ResponseEntity<?> getQuizzesOfCategory(@PathVariable Long cid ){
+
+        Category category=new Category();
+        category.setCid(cid);
+        return ResponseEntity.ok(this.quizService.getQuizzesOfCategory(category));
+    }
+
 }

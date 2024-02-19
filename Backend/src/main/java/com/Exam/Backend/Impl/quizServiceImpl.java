@@ -1,5 +1,6 @@
 package com.Exam.Backend.Impl;
 
+import com.Exam.Backend.Model.Exam.Category;
 import com.Exam.Backend.Model.Exam.Quiz;
 import com.Exam.Backend.Repository.quizRepository;
 import com.Exam.Backend.Service.quizService;
@@ -55,4 +56,11 @@ public class quizServiceImpl implements quizService {
     public Quiz getQuizById(Long quizId) {
         return this.quizRepository.findById(quizId).get();
     }
+
+    @Override
+    public List<Quiz> getQuizzesOfCategory(Category category) {
+        return this.quizRepository.findBycategory(category);
+    }
+
+
 }

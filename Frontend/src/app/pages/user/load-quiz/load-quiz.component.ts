@@ -27,13 +27,16 @@ export class LoadQuizComponent implements OnInit{
       category:{
         title:''
       }
-    }
-  ]
+    },
+  ];
+
   constructor(private route:ActivatedRoute,private quiz:QuizService){}
 
 
   ngOnInit(): void {
-     this.cId=this.route.snapshot.params['cId'];
+
+    this.route.params.subscribe((params)=>{
+      this.cId=this.route.snapshot.params['cId'];
       if(this.cId==0){
         this.quiz.display().subscribe((data:any)=>{
           this.quizzes=data;
@@ -45,8 +48,19 @@ export class LoadQuizComponent implements OnInit{
         )
       }
       else{
-
+        this.quiz.getQuizzesOfCategory(this.cId).subscribe(
+          (data:any)=>{
+            this.quizzes=data;
+            console.log(this.quizzes);
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )         
       }
+    })
+
+     
   }
 
 }
