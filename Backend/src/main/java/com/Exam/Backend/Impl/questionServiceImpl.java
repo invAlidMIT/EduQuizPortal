@@ -61,4 +61,7 @@ public class questionServiceImpl implements questionService {
     public List<Question> getQuestionsOfQuiz(Quiz quiz) {
        return this.questionRepository.findByQuiz(quiz);
     }
+
+
+
 }

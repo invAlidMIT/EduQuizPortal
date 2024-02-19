@@ -42,4 +42,16 @@ export class QuizService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.get(`${baseUrl}/quiz/category/${cid}`,{headers});
   }
+
+  public getActiveQuizzes(){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/quiz/active`,{headers});
+  }
+
+  public getActiveQuizzesOfCategory(cid:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/quiz/category/active/${cid}`,{headers});
+  }
 }
