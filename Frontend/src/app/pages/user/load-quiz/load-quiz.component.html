@@ -17,7 +17,7 @@
                     </mat-card-content>
                     <mat-card-actions class="mt-4">
                         <button mat-button>View</button>
-                        <button mat-button color="primary" style="margin-left: 2px;">Start</button>
+                        <button [routerLink]="'/userDashboard/quiz-instructions/'+q.qid"  mat-button color="primary" style="margin-left: 2px;">Start</button>
                         <button mat-button color="warn" style="margin-left: 2px;">Max Marks: {{q.maxMarks}}</button>
                         <button mat-button color="warn" style="margin-left: 2px;">Questions: {{q.numberOfQuestions}}</button>
 

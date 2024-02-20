@@ -1,0 +1,45 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>
+                            Read The Instructions Properly!!! 
+                        </mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content class="mt-4">
+                        <h2>{{quiz.title}}</h2>
+                        <p>{{quiz.description}}</p>
+                        <mat-divider></mat-divider>
+                        <br/>
+                        <h2>Instructions:</h2>
+                        <ol>
+                            <li>This quiz is for practice purpose.</li>
+                            <li>Duration of this Quiz is <b>{{quiz.numberOfQuestions}} minutes</b>.</li>
+                            <li>Total Questions are <b>{{quiz.numberOfQuestions}}</b>.</li>
+                            <li>Total marks is <b>{{quiz.maxMarks}}</b>.</li>
+                            <li>you can attempt quiz any number of times.</li>
+                            <li>Each question carries <b>1 mark</b>.</li>
+                            <li>No negetive marking.</li>
+                        </ol>
+                        <mat-divider></mat-divider>
+                        <br/>
+                        <h2>Starting the Quiz</h2>
+                        <ol>
+                            <li>Click Start button to start the quiz.</li>
+                            <li>You cant resume the quiz if any interruption happens.</li>
+                            <li>Click on Next button to move to next question.</li>
+                            <li>Click on Submit button to submit the quiz</li>
+                            <li>Report will be generated automatically.</li>
+
+                        </ol>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="primary mt-4" style="margin: 0 auto;display: block" >Start</button>
+                    </mat-card-actions>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>

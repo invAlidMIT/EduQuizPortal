@@ -16,6 +16,7 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
 import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
 import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions.component';
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-instructions.component';
 
 
 export const routes: Routes = [
@@ -42,6 +43,10 @@ export const routes: Routes = [
             {
                 path:':cId',
                 component:LoadQuizComponent
+            },
+            {
+                path:'quiz-instructions/:qid',
+                component:QuizInstructionsComponent
             }
         ]
     },
