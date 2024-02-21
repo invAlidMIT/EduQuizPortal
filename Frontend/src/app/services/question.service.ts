@@ -16,6 +16,12 @@ export class QuestionService {
     return this.http.get(`${baseUrl}/question/quiz/all/${qid}`,{headers});
   }
 
+  public getQuestionsOfQuizForUser(qid:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/question/quiz/${qid}`,{headers});
+  }
+
   public addQuestion(question:any){
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
