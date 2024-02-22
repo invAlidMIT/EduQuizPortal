@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/question")
@@ -71,6 +72,27 @@ public class questionController {
        quiz.setQid(qId);
        List<Question> questions=this.questionService.getQuestionsOfQuiz(quiz);
        return  ResponseEntity.ok(questions);
+    }
+
+    @PostMapping("/eval-quiz")
+    public ResponseEntity<?> evalQuiz(@RequestBody List<Question> questions){
+        int marksGot=0;
+        double correctAnswers=0;
+        int attempts=0;
+        for(Question q:questions){
+            Question question=this.questionService.get(q.getQid());
+            if(question.getAnswer().trim().equals(q.getGivenAnswer())){
+                    correctAnswers++;
+                    double marksForSingle=Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
+                    marksGot+=marksForSingle;
+            }
+            if(q.getGivenAnswer()!=null && q.getGivenAnswer()!=""){
+                    attempts++;
+            }
+
+        }
+        Map<String,Object> map=Map.of("marksGot",marksGot,"correctAnswers",correctAnswers,"attempts",attempts);
+        return ResponseEntity.ok(map);
     }
 
 

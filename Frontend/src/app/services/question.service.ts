@@ -33,4 +33,10 @@ export class QuestionService {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
     return this.http.delete(`${baseUrl}/question/${qid}`,{headers});
   }
+
+  public evalQuiz(questions:any){
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${baseUrl}/question/eval-quiz`,questions,{headers});
+  }
 }

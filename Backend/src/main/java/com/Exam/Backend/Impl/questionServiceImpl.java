@@ -62,6 +62,10 @@ public class questionServiceImpl implements questionService {
        return this.questionRepository.findByQuiz(quiz);
     }
 
+    @Override
+    public Question get(Long qid) {
+        return this.questionRepository.getOne(qid);
+    }
 
 
 }

@@ -50,7 +50,7 @@ export class StartQuizComponent implements OnInit {
           }
     
         }
-      ];
+    ]
 
       marksGot=0;
       correctAnswers=0;
@@ -67,10 +67,6 @@ export class StartQuizComponent implements OnInit {
         this.questionService.getQuestionsOfQuizForUser(this.qid).subscribe((data:any)=>{
             this.questions=data;
             this.timer=this.questions.length*2*60;
-           this.questions.forEach((q)=>{
-                console.log(this.questions);
-                q['givenAnswer']='';
-           })
            this.startTimer();
         },
         (error)=>{
@@ -120,26 +116,18 @@ export class StartQuizComponent implements OnInit {
     }
 
     public evalQuiz(){
-        this.marksGot=0;
-        this.correctAnswers=0;
-        this.attempted=0;
-        this.isSubmit=true;
-        this.questions.forEach((q)=>{
-            if(q.givenAnswer==q.answer){
-                this.correctAnswers++;
-                this.marksGot++;
 
-            }
-            if(q.givenAnswer.trim()!=''){
-                this.attempted++;
-            }
-            
+        this.questionService.evalQuiz(this.questions).subscribe((data:any)=>{
+            console.log(data);
+            this.marksGot=data.marksGot;
+        this.correctAnswers=data.correctAnswers;
+        this.attempted=data.attempts;
+        },
+        (error)=>{
+            console.log(error);
         })
-        console.log("correct answers"+this.correctAnswers);
-            console.log("Marks obtained:"+this.marksGot);
-            console.log("Attempted Questions: "+this.attempted);
-            console.log(this.questions);
-           
+        this.isSubmit=true;
+        
     }
 
 
