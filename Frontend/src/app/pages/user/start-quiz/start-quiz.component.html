@@ -50,6 +50,16 @@
         </div>
         <div class="col-md-2">
             <h2>Progress</h2>
+            <mat-card>
+                <mat-card-content>
+                    <h3 style="text-align: center;"> {{getFormattedTime()}}</h3>
+                    <mat-spinner 
+                    [mode]="'determinate'"
+                    [value]="(timer/(this.questions.length*120))*100"
+                    style="display: block; margin: auto; width: 100px; height: 100px;"></mat-spinner>
+                </mat-card-content>
+            </mat-card>
+           
         </div>
     </div>
 </div>

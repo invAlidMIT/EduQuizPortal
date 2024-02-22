@@ -14,6 +14,8 @@ import { MatInputModule } from '@angular/material/input';
 import {MatRadioModule} from '@angular/material/radio';
 import Swal from 'sweetalert2';
 import { RouterLink } from '@angular/router';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @Component({
@@ -23,7 +25,7 @@ import { RouterLink } from '@angular/router';
     styleUrl: './start-quiz.component.css',
     imports: [NavbarComponent,MatCardModule,MatListModule,MatIconModule,MatButtonModule,
     CommonModule,MatFormFieldModule,FormsModule,MatInputModule,MatRadioModule,
-RouterLink]
+RouterLink,MatProgressSpinnerModule]
 })
 export class StartQuizComponent implements OnInit {
 
@@ -54,6 +56,7 @@ export class StartQuizComponent implements OnInit {
       correctAnswers=0;
       attempted=0;
       isSubmit=false;
+      timer:any;
 
     ngOnInit(): void {
         this.preventBackButton();
@@ -63,10 +66,12 @@ export class StartQuizComponent implements OnInit {
     loadQuestions() {
         this.questionService.getQuestionsOfQuizForUser(this.qid).subscribe((data:any)=>{
             this.questions=data;
+            this.timer=this.questions.length*2*60;
            this.questions.forEach((q)=>{
                 console.log(this.questions);
                 q['givenAnswer']='';
            })
+           this.startTimer();
         },
         (error)=>{
             console.log(error);
@@ -90,29 +95,51 @@ export class StartQuizComponent implements OnInit {
             icon:'info'
         }).then((result)=>{
             if(result.isConfirmed){
-                this.marksGot=0;
-                this.correctAnswers=0;
-                this.attempted=0;
-                this.isSubmit=true;
-                this.questions.forEach((q)=>{
-                    if(q.givenAnswer==q.answer){
-                        this.correctAnswers++;
-                        this.marksGot++;
-
-                    }
-                    if(q.givenAnswer.trim()!=''){
-                        this.attempted++;
-                    }
-                    
-                })
-                console.log("correct answers"+this.correctAnswers);
-                    console.log("Marks obtained:"+this.marksGot);
-                    console.log("Attempted Questions: "+this.attempted);
-                    console.log(this.questions);
-                   
+               this.evalQuiz();
             }
         })
         
+    }
+
+    public startTimer(){
+       let t= window.setInterval(()=>{
+            if(this.timer<=0){
+                this.evalQuiz();
+                clearInterval(t);
+            }
+            else{
+                this.timer--;
+            }
+        },1000)
+    }
+
+    public getFormattedTime(){
+        let mm=Math.floor(this.timer/60);
+        let ss=this.timer-mm*60;
+        return `${mm} min : ${ss} sec`; 
+    }
+
+    public evalQuiz(){
+        this.marksGot=0;
+        this.correctAnswers=0;
+        this.attempted=0;
+        this.isSubmit=true;
+        this.questions.forEach((q)=>{
+            if(q.givenAnswer==q.answer){
+                this.correctAnswers++;
+                this.marksGot++;
+
+            }
+            if(q.givenAnswer.trim()!=''){
+                this.attempted++;
+            }
+            
+        })
+        console.log("correct answers"+this.correctAnswers);
+            console.log("Marks obtained:"+this.marksGot);
+            console.log("Attempted Questions: "+this.attempted);
+            console.log(this.questions);
+           
     }
 
 
