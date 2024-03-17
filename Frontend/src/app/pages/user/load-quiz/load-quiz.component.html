@@ -2,7 +2,7 @@
     <div class="container-fliud">
         <div class="row">
             <div class="col-md-4" *ngFor="let q of quizzes" >
-                <mat-card>
+                <mat-card class="mat-card">
                     <mat-card-header>
                         <div mat-card-avatar class="image"></div>
                         <mat-card-title>
@@ -26,7 +26,7 @@
                 
             </div>
             <div class="col-md-12 text-center" *ngIf="quizzes.length==0">
-                <mat-card>
+                <mat-card class="mat-card">
                     <mat-card-content>
                         <h2>No Quizzes Available For This Category!!</h2>
                     </mat-card-content>

@@ -1,0 +1,17 @@
+<mat-card class="mat-card" *ngFor="let questionPaper of questionPapers">
+    <mat-card-header>
+      <mat-card-title>{{ questionPaper.collegeName }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>Exam Type: {{ questionPaper.examType }}</p>
+      <p>Subject: {{ questionPaper.subjectCode }}</p>
+     
+    </mat-card-content>
+    <mat-card-actions>
+        <button  [routerLink]="'view-questionPaper-questions/' + questionPaper.qid"  mat-raised-button color="primary">Questions</button>
+        <button mat-raised-button color="primary" [routerLink]="'viewQuestionPaper/'+questionPaper.qid" style="margin-left: 7px;" >View</button>
+        <button mat-button color="primary" [routerLink]="'updateQuestionPaper/'+questionPaper.qid" style="margin-left: 7px;" >Update</button>
+        <button mat-button (click)="deleteQuestionPaper(questionPaper.qid)" color="warn" style="margin-left: 7px;" >Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  

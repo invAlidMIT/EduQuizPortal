@@ -2,7 +2,7 @@
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-12">
-            <mat-card *ngFor="let q of questions;let i=index" class="mt-4">
+            <mat-card *ngFor="let q of questions;let i=index" class="mat-card mt-4">
                 <mat-card-content>
                     <p>
                         Q {{i+1}} <span [innerHTML]="q.content"></span>

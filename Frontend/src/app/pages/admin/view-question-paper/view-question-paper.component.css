@@ -1,0 +1,68 @@
+.question-paper {
+    font-family: Arial, sans-serif;
+    width: 800px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  
+  .header {
+    font-weight: bold;
+    text-align: center;
+    
+  }
+  
+  .department {
+    font-weight: bold;
+    text-align: center;
+    
+  }
+
+  .sem{
+    font-weight: bold;
+    text-align: center;
+    
+  }
+
+  .test-details,
+  .evaluation {
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .test-details h4 {
+    font-weight: bold;
+    margin: 0;
+    
+  }
+
+  .faculty{
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+
+  .instructions {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    
+  }
+
+  .question-table {
+    width: 110%;
+    border-collapse: collapse;
+  }
+  .question-table th,
+  .question-table td {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid black;
+  }
+  .question-table th:nth-child(2) {
+    width: 80%; 
+  }
+  
+   .mr{
+    margin-right: 7px;
+   }

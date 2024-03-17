@@ -1,16 +1,31 @@
+.dark{
+    background-color: #333 !important;
+    min-height: 100vh;
+  }
 
-html, body { height: 100% I !important }
+  .dark .mat-card{
+    background-color: white !important;
+    color: black !important;
+  }
 
-body{
-    background-color: #F5F5F5
+  .dark .theme{
+    color: white !important;
+  }
 
+.light {
+    background-color: #fff !important;
+  }
 
-    !important;
+  .light .mat-card {
+    background-color: #333 !important;
+    color: white !important;
+  }
+
+.light .mat-toolbar{
+  background-color: white !important;
+  color: black  !important;
 }
 
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.text-center{
-    text-align: center;
+.light .example-icon #github-icon {
+  --github-icon-path: url(../../Frontend/src/assets/github-mark.svg);
 }
-

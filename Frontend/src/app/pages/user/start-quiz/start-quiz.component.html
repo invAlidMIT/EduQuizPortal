@@ -10,7 +10,7 @@
                <h2>{{questions[0].quiz.title}}</h2>
 
             </ng-container>
-            <mat-card *ngFor="let q of questions;;let i = index" class="mt-2">
+            <mat-card *ngFor="let q of questions;;let i = index" class="mt-2" class="mat-card">
                 <mat-card-content>
                     <p>Q) {{i+1}}<span [innerHTML]="q.content"></span></p>
                 </mat-card-content>
@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-2">
             <h2>Progress</h2>
-            <mat-card>
+            <mat-card class="mat-card">
                 <mat-card-content>
                     <h3 style="text-align: center;"> {{getFormattedTime()}}</h3>
                     <mat-spinner 
@@ -69,7 +69,7 @@
 <div class="container-fluid">
 <div class="row">
     <div class="col-md-6 offset-md-3">
-        <mat-card>
+        <mat-card class="mat-card">
             <mat-card-header>
                 <div class="container text-center">
                 <mat-card-title>

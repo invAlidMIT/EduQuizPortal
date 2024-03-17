@@ -18,6 +18,13 @@ import { AddQuestionsComponent } from './pages/admin/add-questions/add-questions
 import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
 import { QuizInstructionsComponent } from './pages/user/quiz-instructions/quiz-instructions.component';
 import { StartQuizComponent } from './pages/user/start-quiz/start-quiz.component';
+import { QuestionPapersComponent } from './pages/admin/question-papers/question-papers.component';
+import { ViewQuestionPaperQuestionsComponent } from './pages/admin/view-question-paper-questions/view-question-paper-questions.component';
+import { AddQestionsToQuestinPaperComponent } from './pages/admin/add-qestions-to-questin-paper/add-qestions-to-questin-paper.component';
+import { UpdateQuestionsOfQuestionPaperComponent } from './pages/admin/update-questions-of-question-paper/update-questions-of-question-paper.component';
+import { AddQuestionPaperComponent } from './pages/admin/add-question-paper/add-question-paper.component';
+import { UpdateQuestionPaperComponent } from './pages/admin/update-question-paper/update-question-paper.component';
+import { ViewQuestionPaperComponent } from './pages/admin/view-question-paper/view-question-paper.component';
 
 
 export const routes: Routes = [
@@ -90,7 +97,37 @@ export const routes: Routes = [
             {
                 path:'add-question/:id/:title',
                 component:AddQuestionsComponent
+            },
+            {
+                path:'questionPapers',
+                component:QuestionPapersComponent
+            },
+            {
+                path:'questionPapers/view-questionPaper-questions/:qid',
+                component:ViewQuestionPaperQuestionsComponent
+            },
+            {
+                path:"addQuestionsToQuestionPaper/:qid",
+                component:AddQestionsToQuestinPaperComponent
+            },
+            {
+                path:"updateQuestionsOfQuestionPaper/:qid/:id",
+                component:UpdateQuestionsOfQuestionPaperComponent,
+            
+            },
+            {
+                path:'add-question-paper',
+                component:AddQuestionPaperComponent
+            },{
+                path:'questionPapers/updateQuestionPaper/:qid',
+                component:UpdateQuestionPaperComponent
+            },
+            {
+                path:'questionPapers/viewQuestionPaper/:qid',
+                component:ViewQuestionPaperComponent
             }
+            
+
         ],
         canActivate:[adminGuard]
     },

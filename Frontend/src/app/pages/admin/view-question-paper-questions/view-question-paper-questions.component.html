@@ -1,0 +1,29 @@
+<div class="bootstrap-wrapper">
+<div class="container" *ngIf="questions && questions.length > 0" >
+    <h2 class="theme" style="text-align: center;">Questions</h2>
+    <mat-card class="mat-card" *ngFor="let question of questions">
+    <mat-card-content>
+        <p><strong>Marks:</strong> {{ question.marks }}</p>
+                <p><strong>CO:</strong> {{ question.co }}</p>
+                <p><strong>BTL:</strong> {{ question.btl }}</p>
+                <p><strong>Question Content:</strong> {{ question.questionContent }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [routerLink]="['/adminDashboard/updateQuestionsOfQuestionPaper', questionPaperId, question.qid]" color="primary">Update</button>
+
+      <button mat-button  color="warn" (click)="deleteQuestion(question.qid)" >Delete</button>
+    </mat-card-actions>
+    </mat-card>
+</div>
+
+    <div *ngIf="!questions || questions.length === 0">
+      <mat-card class="mat-card">
+        <p style="text-align: center;font-size: larger;margin-top: 5px;font-weight: bold;">No questions found for this question paper.</p>
+      </mat-card>
+      
+    </div>
+    <button mat-raised-button color="primary" [routerLink]="['/adminDashboard/addQuestionsToQuestionPaper',questionPaperId]" style="margin-top: 10px;margin-left: 450px;" >Add Questions</button>
+</div>
+    
+
+  

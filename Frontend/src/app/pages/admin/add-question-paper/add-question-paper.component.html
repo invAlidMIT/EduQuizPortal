@@ -1,0 +1,129 @@
+<mat-card class="mat-card">
+    <mat-card-title class="text-center mt-4">Add Question Paper</mat-card-title>
+    <div class="container">
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+    <form class="text-center mt-4">
+        <mat-form-field class="w100" appearance="outline">
+            <mat-label>College Name</mat-label>
+            <input 
+            [(ngModel)]="questionPaper.collegeName"
+            type="text" placeholder="enter collegeName" 
+            name="collegeName" matInput
+            required
+            >
+            </mat-form-field>
+            <div class="w100">
+                <mat-form-field class="w40" style="margin-right: 10px;" appearance="outline">
+                    <mat-label>Institution</mat-label>
+                    <input 
+                    [(ngModel)]="questionPaper.institutionName"
+                    type="text" placeholder="enter institution name" 
+                    name="Institution" matInput
+                    required
+                    >
+                    </mat-form-field>
+
+            <mat-form-field class="w40"  appearance="outline">
+                <mat-label>Department</mat-label>
+                <input 
+                [(ngModel)]="questionPaper.department"
+                type="text" placeholder="enter Department name" 
+                name="Department" matInput
+                required
+                >
+                </mat-form-field>
+            </div>
+            <div class="w100">
+                <mat-form-field class="w40" style="margin-right: 10px;" appearance="outline">
+                    <mat-label>ExamType</mat-label>
+                    <input 
+                    [(ngModel)]="questionPaper.examType"
+                    type="text" placeholder="enter Type of exam" 
+                    name="ExamType" matInput
+                    required
+                    >
+                    </mat-form-field>
+
+            <mat-form-field class="w40"  appearance="outline">
+                <mat-label>Semester</mat-label>
+                <input 
+                [(ngModel)]="questionPaper.semester"
+                type="text" placeholder="enter Semester" 
+                name="Semester" matInput
+                required
+                >
+                </mat-form-field>
+            </div>
+                <div class="w100">
+                    <mat-form-field class="w40" style="margin-right: 10px;" appearance="outline">
+                        <mat-label>testName</mat-label>
+                        <input 
+                        [(ngModel)]="questionPaper.test"
+                        type="text" placeholder="enter name of Test" 
+                        name="testName" matInput
+                        required
+                        >
+                        </mat-form-field>
+    
+                <mat-form-field class="w40"  appearance="outline">
+                    <mat-label>subjectCode</mat-label>
+                    <input 
+                    [(ngModel)]="questionPaper.subjectCode"
+                    type="text" placeholder="enter subject code" 
+                    name="subjectCode" matInput
+                    required
+                    >
+                    </mat-form-field>
+                    </div>
+                    <div class="w100">
+                        <mat-form-field class="w40" style="margin-right: 10px;" appearance="outline">
+                            <mat-label>Faculty</mat-label>
+                            <input 
+                            [(ngModel)]="questionPaper.faculty"
+                            type="text" placeholder="enter name of faculty" 
+                            name="Faculty" matInput
+                            required
+                            >
+                            </mat-form-field>
+        
+                    <mat-form-field class="w40"  appearance="outline">
+                        <mat-label>Time</mat-label>
+                        <input 
+                        [(ngModel)]="questionPaper.time"
+                        type="text" placeholder="enter Test Duration" 
+                        name="Time" matInput
+                        required
+                        >
+                        </mat-form-field>
+                        </div>
+                        <div class="w100">
+                            <mat-form-field class="w40" style="margin-right: 10px;" appearance="outline">
+                                <mat-label>Note</mat-label>
+                                <input 
+                                [(ngModel)]="questionPaper.note"
+                                type="text" placeholder="enter note" 
+                                name="Note" matInput
+                                required
+                                >
+                                </mat-form-field>
+            
+                        <mat-form-field class="w40"  appearance="outline">
+                            <mat-label>maxMarks</mat-label>
+                            <input 
+                            [(ngModel)]="questionPaper.maxMarks"
+                            type="text" placeholder="enter Maximum Marks" 
+                            name="maxMarks" matInput
+                            required
+                            >
+                            </mat-form-field>
+                            </div>
+            </form>
+            <div class="container text-center">
+                <button mat-raised-button color="primary" class="button" (click)="addQuestionPaper()">Add</button>
+            </div>
+            
+            </div>
+            </div>
+            </div>
+</mat-card>

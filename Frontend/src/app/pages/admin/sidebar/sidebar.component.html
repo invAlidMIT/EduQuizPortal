@@ -1,4 +1,4 @@
-<mat-card>
+<mat-card class="mat-card">
     <mat-action-list>
         <div mat-subheader>Menu</div>
         <button mat-list-item routerLink="/adminDashboard">
@@ -36,6 +36,21 @@
             <mat-icon>add</mat-icon>
             <span>Add Quiz</span>
                 </div>
+        </button>
+
+
+        <button mat-list-item routerLink="/adminDashboard/questionPapers">
+            <div class="mat-item">
+            <mat-icon>description</mat-icon>
+            <span>Question Papers</span>
+        </div>
+        </button>
+
+        <button mat-list-item routerLink="/adminDashboard/add-question-paper">
+            <div class="mat-item">
+                <mat-icon>add</mat-icon>
+                <span>Add QP</span>
+            </div>
         </button>
         <button mat-list-item routerLink="/adminDashboard/profile">
             <div class="mat-item">
