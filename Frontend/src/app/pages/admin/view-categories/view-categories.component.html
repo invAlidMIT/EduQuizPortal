@@ -5,7 +5,9 @@
         <div class="list-item">
         <mat-icon mat-list-icon>category</mat-icon>
           <span>{{ category.title }}</span>
+          <button mat-raised-button (click)="deleteCategory(category.cid)" color="warn" style="margin-left: 50px;font-size: small;width: 5px;height: 25px;" >Delete</button>
         </div>
+        
       </mat-list-item>
     </mat-list>
     <div class="container text-center" style="margin-top: 20pt;margin-bottom: 20pt;">
