@@ -1,21 +1,16 @@
 <mat-card *ngIf="user" class="mat-card">
-    <h3>Profile</h3>
+    <h3 style="margin-top: 30px;font-size: x-large;font-weight: bold;text-align: center;font-family:Arial, Helvetica, sans-serif;">PROFILE</h3>
     <mat-card-content>
         <div class="bootstrap-wrapper">
             <div class="container">
 
                 <div class="container text-center">
                     <img src="https://www.pngarts.com/files/10/Default-Profile-Picture-Transparent-Image.png" alt="profile"
-                    class="profile-pic">
-                       
-                    <h3 class="mt-4">Amit Hegde</h3>
+                    class="profile-pic">     
                 </div>
-
-
-
                 <div class="row">
                     <div class="col-md-10 offset-md-1">
-                      <table class="table text-center">
+                      <table class="table text-center mt-4">
                         <tr>
                             <td>Username</td>
                             <td>{{user.username}}</td>
@@ -50,6 +45,5 @@
     </mat-card-content>
     <mat-card-actions class="mat-card-actions">
         <button mat-raised-button color="primary" style="margin-right: 12px;">Update</button>
-        <button mat-raised-button color="warn">Share</button>
     </mat-card-actions>
 </mat-card>
