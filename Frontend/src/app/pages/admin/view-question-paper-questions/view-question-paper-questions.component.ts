@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 import { QuestionPaper } from '../../../model/question-paper.model';
 import { Questions } from '../../../model/questions.model';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionPaperService } from '../../../services/question-paper.service';
 import { QuestionsService } from '../../../services/questions.service';
 import {MatCardModule} from '@angular/material/card';
@@ -10,6 +10,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { Papa } from 'ngx-papaparse';
 
 @Component({
   selector: 'app-view-question-paper-questions',
@@ -19,6 +20,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './view-question-paper-questions.component.css'
 })
 export class ViewQuestionPaperQuestionsComponent implements OnInit{ 
+selectedFile: File | null = null;
 questionPaperId: number=0;
 questionPaper: QuestionPaper={
   qid: 0,
@@ -86,8 +88,12 @@ questions: Questions[]=[
 constructor(
   private route: ActivatedRoute,
   private questionPaperService: QuestionPaperService,
-  private questionsService: QuestionsService
-) { }
+  private questionsService: QuestionsService,
+  private papa: Papa,
+  private router: Router,
+) {
+}
+
 
 ngOnInit(): void {
     this.questionPaperId=this.route.snapshot.params['qid'];
@@ -131,5 +137,59 @@ deleteQuestion(questionId: number): void {
     );
   }
 
+}
+
+isImporting: boolean = false;
+
+handleFileInput(event: any) {
+  this.isImporting = true; 
+  const target = event.target;
+  if (target.files && target.files.length > 0) {
+    this.selectedFile = target.files[0];
+    this.importQuestions();
+    this.isImporting = false; 
+  } else {
+    console.error('No file selected.');
+  }
+   
+}
+
+importQuestions() {
+  console.log('Importing questions...');
+  if (!this.selectedFile) {
+    console.error('No file selected.');
+    return;
+  }
+
+  console.log('Selected file:', this.selectedFile);
+
+  this.papa.parse(this.selectedFile, {
+    header: true,
+    complete: (result) => {
+      console.log('Parsing complete. Result:', result);
+      result.data.forEach((row: any) => {
+        const newQuestion: Questions = {
+          marks: row['Marks'],
+          co: row['CO'],
+          btl: row['BTL'],
+          questionContent: row['Question'],
+          qid: 0,
+          questionPaper: new QuestionPaper
+        };
+        newQuestion.questionPaper.qid = this.questionPaperId;
+
+        console.log('Adding question:', newQuestion);
+        this.questionsService.addQuestion(newQuestion).subscribe(
+          (data) => {
+            console.log('Question imported successfully:', data);
+          },
+          (error) => {
+            console.error('Error importing question:', error);
+          }
+        );
+      });
+     
+    }
+  });
 }
 }
