@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { QuestionPaper } from '../../../model/question-paper.model';
 import { Questions } from '../../../model/questions.model';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -99,7 +99,6 @@ ngOnInit(): void {
     this.questionPaperId=this.route.snapshot.params['qid'];
     this.loadQuestionPaperDetails();
     this.loadQuestions();
-  
 }
 
 loadQuestionPaperDetails(): void {
@@ -136,9 +135,7 @@ deleteQuestion(questionId: number): void {
       }
     );
   }
-
 }
-
 isImporting: boolean = false;
 
 handleFileInput(event: any) {
@@ -151,7 +148,6 @@ handleFileInput(event: any) {
   } else {
     console.error('No file selected.');
   }
-   
 }
 
 importQuestions() {
@@ -179,14 +175,17 @@ importQuestions() {
         newQuestion.questionPaper.qid = this.questionPaperId;
 
         console.log('Adding question:', newQuestion);
-        this.questionsService.addQuestion(newQuestion).subscribe(
-          (data) => {
-            console.log('Question imported successfully:', data);
-          },
-          (error) => {
-            console.error('Error importing question:', error);
-          }
-        );
+        if(newQuestion.questionContent!=null && newQuestion.questionContent!=''){
+          this.questionsService.addQuestion(newQuestion).subscribe(
+            (data) => {
+              console.log('Question imported successfully:', data);
+              this.loadQuestions();
+            },
+            (error) => {
+              console.error('Error importing question:', error);
+            }
+          );
+        }
       });
      
     }

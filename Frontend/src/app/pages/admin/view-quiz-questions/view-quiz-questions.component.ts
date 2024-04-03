@@ -65,15 +65,7 @@ export class ViewQuizQuestionsComponent implements OnInit {
    
     this.qId= this.route.snapshot.params['id'];
     this.qTitle= this.route.snapshot.params['title'];
-    this.questionService.getQuestionsOfQuiz(this.qId).subscribe(
-      (data:any)=>{
-        this.questions=data;
-        console.log(this.questions);
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+    this.loadQuestions();
   }
 
   public deleteQuestion(qid:any){
@@ -141,17 +133,33 @@ export class ViewQuizQuestionsComponent implements OnInit {
           };
 
           console.log('Adding question:', newQuestion);
-          this.questionService.addQuestion(newQuestion).subscribe(
-            (data) => {
-              console.log('Question imported successfully:', data);
-            },
-            (error) => {
-              console.error('Error importing question:', error);
-            }
-          );
+          if(newQuestion.content!=='' && newQuestion.content!==null){
+            this.questionService.addQuestion(newQuestion).subscribe(
+              (data) => {
+                console.log('Question imported successfully:', data);
+                this.loadQuestions();
+              },
+              (error) => {
+                console.error('Error importing question:', error);
+              }
+            );
+          }
+         
         });
       }
     });
+  }
+
+  loadQuestions() {
+    this.questionService.getQuestionsOfQuiz(this.qId).subscribe(
+      (data: any) => {
+        this.questions = data;
+        console.log(this.questions);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
   }
 }
 
