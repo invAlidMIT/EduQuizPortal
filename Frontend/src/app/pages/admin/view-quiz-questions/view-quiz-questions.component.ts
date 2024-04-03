@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -12,6 +12,19 @@ import { MatInputModule } from '@angular/material/input';
 import { RouterLink } from '@angular/router';
 import Swal from 'sweetalert2';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Papa } from 'ngx-papaparse';
+
+interface QuizQuestion {
+      content:'',
+      option1:'',
+      option2:'',
+      option3:'',
+      option4:'',
+      answer:'',
+      quiz:{
+        
+      }
+}
 
 @Component({
   selector: 'app-view-quiz-questions',
@@ -23,6 +36,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ViewQuizQuestionsComponent implements OnInit {
 
+  selectedFile: File | null = null;
   qId: any;
   qTitle: any;
   questions=[
@@ -42,7 +56,10 @@ export class ViewQuizQuestionsComponent implements OnInit {
   ];
 
   constructor(private route:ActivatedRoute,private questionService:QuestionService,
-    private snack:MatSnackBar){}
+    private snack:MatSnackBar,
+    private papa: Papa,
+  private router: Router
+  ){}
 
   ngOnInit(): void {
    
@@ -83,4 +100,60 @@ export class ViewQuizQuestionsComponent implements OnInit {
     })
   }
 
+  isImporting: boolean = false;
+
+  handleFileInput(event: any) {
+    this.isImporting = true; 
+    const target = event.target;
+    if (target.files && target.files.length > 0) {
+      this.selectedFile = target.files[0];
+      this.importQuestions();
+      this.isImporting = false; 
+    } else {
+      console.error('No file selected.');
+    }
+  }
+
+  importQuestions() {
+    console.log('Importing questions...');
+    if (!this.selectedFile) {
+      console.error('No file selected.');
+      return;
+    }
+
+    console.log('Selected file:', this.selectedFile);
+
+    this.papa.parse(this.selectedFile, {
+      header: true,
+      complete: (result) => {
+        console.log('Parsing complete. Result:', result);
+        result.data.forEach((row: any) => {
+          const newQuestion: QuizQuestion = {
+            content: row['Content'],
+            option1: row['Option1'],
+            option2: row['Option2'],
+            option3: row['Option3'],
+            option4: row['Option4'],
+            answer: row['Answer'],
+            quiz: {
+              qid:this.qId
+            }
+          };
+
+          console.log('Adding question:', newQuestion);
+          this.questionService.addQuestion(newQuestion).subscribe(
+            (data) => {
+              console.log('Question imported successfully:', data);
+            },
+            (error) => {
+              console.error('Error importing question:', error);
+            }
+          );
+        });
+      }
+    });
+  }
 }
+
+
+
