@@ -9,7 +9,8 @@
         <button [routerLink]="'/adminDashboard/view-questions/'+ quiz.qid+'/'+ quiz.title" mat-raised-button color="primary">Questions</button>
         <button  mat-stroked-button color="primary" style="margin-left: 5px;">Max Marks {{quiz.maxMarks}}</button>
         <button  mat-stroked-button color="primary" style="margin-left: 5px;">Questions: {{quiz.numberOfQuestions}}</button>
-        <button mat-stroked-button color="primary" style="margin-left: 5px;">Attemps </button>
+        <button mat-stroked-button   [routerLink]="quiz.active ? '/adminDashboard/quiz-result/' + quiz.qid : ''" color="primary" *ngIf="quiz.active" style="margin-left: 5px;">Attempts</button>
+        <button mat-stroked-button color="primary" *ngIf="!quiz.active" (click)="showAlert()" style="margin-left: 5px;">Attempts</button>
         <button [routerLink]="'/adminDashboard/update-quiz/' + quiz.qid" mat-flat-button color="primary" style="margin-left: 5px;">Update</button>
         <button (click)="deleteQuiz(quiz.qid)" mat-raised-button color="warn" style="margin-left: 5px;">Delete</button>
 

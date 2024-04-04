@@ -42,10 +42,4 @@ export class NavbarComponent implements OnInit{
     this.isDarkTheme=this.themeService.themeSignal()==='dark';
 
   }
-
-
-
-
-
-
 }

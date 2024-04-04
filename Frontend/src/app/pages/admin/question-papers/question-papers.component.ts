@@ -73,7 +73,6 @@ export class QuestionPapersComponent implements OnInit {
     this.questionPaperService.getAllQuestionPapers().subscribe(
       data => {
         this.questionPapers = data;
-        console.log(this.questionPapers);
       },
       error => {
         console.log(error);

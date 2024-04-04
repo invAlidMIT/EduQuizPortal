@@ -15,13 +15,16 @@ import {MatSelectModule} from '@angular/material/select';
 import { ThemePalette } from '@angular/material/core';
 import { CategoryService } from '../../../services/category.service';
 import Swal from 'sweetalert2';
+import { MatDatetimepickerModule } from "@mat-datetimepicker/core";
+import { MatNativeDatetimeModule } from '@mat-datetimepicker/core';
+
 
 @Component({
   selector: 'app-update-quiz',
   standalone: true,
   imports: [MatCardModule,MatListModule,MatIconModule,MatButtonModule,RouterLink
   ,CommonModule,MatFormFieldModule,FormsModule,MatInputModule,MatSlideToggleModule
-,MatSelectModule],
+,MatSelectModule,MatDatetimepickerModule,MatNativeDatetimeModule],
   templateUrl: './update-quiz.component.html',
   styleUrl: './update-quiz.component.css'
 })
@@ -36,13 +39,16 @@ export class UpdateQuizComponent implements OnInit{
   color: ThemePalette = 'primary';
   checked = false;
   disabled = false;
+  scheduledTime: Date | undefined;
 
   ngOnInit(): void {
     this.qid=this.route.snapshot.params['qid'];
     this.quizService.getQuiz(this.qid).subscribe(
       (data:any)=>{
         this.quiz=data;
-        console.log(this.quiz);
+        this.scheduledTime = new Date(this.quiz.scheduledDate);
+        this.scheduledTime.setHours(this.quiz.scheduledHour);
+        this.scheduledTime.setMinutes(this.quiz.scheduledMinute);
       },
       (error)=>{
         console.log(error);
@@ -55,9 +61,21 @@ export class UpdateQuizComponent implements OnInit{
     (error)=>{
       alert("Error occured while loading categories");
     }
-    
     )
   }
+
+
+  loadQuiz(): void {
+    this.quizService.getQuiz(this.qid).subscribe(
+      (data: any) => {
+        this.quiz = data;
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }
+
   public updateQuiz()
   {
     this.quizService.updateQuiz(this.qid,this.quiz).subscribe(
@@ -71,8 +89,22 @@ export class UpdateQuizComponent implements OnInit{
         console.log(error);
       }
     )
+    if (this.scheduledTime) {
+      const now = new Date();
+      const scheduledDate = this.scheduledTime;
+      const timeDifference = scheduledDate.getTime() - now.getTime();
+
+      if (timeDifference > 0) {
+        setTimeout(() => {
+          console.log("Quiz scheduled time reached. Updating quiz...");
+        }, timeDifference);
+      } else {
+        console.warn("Scheduled time has already passed!");
+      }
+    }
   }
+}
+
 
   
 
-}

@@ -36,7 +36,6 @@ export class ViewQuizComponent implements OnInit{
   ngOnInit(): void {
     this.quizService.display().subscribe((data:any)=>{
       this.quizzes=data;
-      console.log(this.quizzes);
     },
     (error)=>{
       Swal.fire('error occured','error');
@@ -62,6 +61,10 @@ export class ViewQuizComponent implements OnInit{
       });
     })
     
+  }
+
+  showAlert() {
+    Swal.fire('Quiz Not Published', 'This quiz is not yet published.', 'warning');
   }
   
 

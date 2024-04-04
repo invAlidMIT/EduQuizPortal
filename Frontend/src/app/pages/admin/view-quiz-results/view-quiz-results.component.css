@@ -1,0 +1,97 @@
+.bootstrap-wrapper {
+    margin-top: 20px;
+  }
+  
+  .container {
+    width: 80%;
+    margin: auto;
+  }
+  
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .col-md-12 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  
+  .mat-card {
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+    background-color: #f8f9fa;
+  }
+  
+  .quiz-results-header {
+    
+    padding: 16px;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .text-center{
+    font-size:larger;
+  }
+  
+  .quiz-information {
+    padding: 16px;
+  }
+  
+  .quiz-info-item {
+    margin-bottom: 12px;
+  }
+  
+  .info-label {
+    font-weight: bold;
+  }
+  
+  .info-value {
+    margin-left: 12px;
+  }
+  
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .result-number {
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .username {
+    font-size: 16px;
+    color: #666;
+  }
+  
+  .result-card {
+    margin-bottom: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #333;
+    text-align: left;
+  }
+  
+  td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    color: #555;
+  }
+  
+  tr:nth-child(even) { 
+    background-color: #f2f2f2;
+  }
+  

@@ -52,6 +52,17 @@
                             publish
       </mat-slide-toggle>
       <br/>
+      <section class="mb-4 mt-4">
+        <mat-form-field class="w100" appearance="outline">
+            <mat-label>Schedule Time (Optional)</mat-label>
+            <input matInput [matDatetimepicker]="picker" placeholder="Choose date and time" [(ngModel)]="scheduledTime">
+            <mat-datetimepicker-toggle matSuffix [for]="picker"></mat-datetimepicker-toggle>
+            <mat-datetimepicker #picker type="datetime"></mat-datetimepicker>
+          </mat-form-field>
+          
+      </section>
+      
+      
       <mat-form-field class="mt-4">
         <mat-label>Choose a categoy</mat-label>
         <mat-select name="category" [(ngModel)]="quiz.category.cid" >

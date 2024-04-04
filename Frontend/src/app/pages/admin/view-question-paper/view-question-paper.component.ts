@@ -55,7 +55,7 @@ export class ViewQuestionPaperComponent implements OnInit{
         time: '',
         note: '',
         maxMarks: 0,
-        questions: []
+        questions: [],
       }
     }
   ];
@@ -115,5 +115,3 @@ export class ViewQuestionPaperComponent implements OnInit{
       .save();
   }
 }
-
-

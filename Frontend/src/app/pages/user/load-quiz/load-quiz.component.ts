@@ -42,7 +42,6 @@ export class LoadQuizComponent implements OnInit{
       if(this.cId==0){
         this.quiz.getActiveQuizzes().subscribe((data:any)=>{
           this.quizzes=data;
-          console.log(this.quizzes);
         },
         (error)=>{
           console.log(error);
@@ -53,7 +52,6 @@ export class LoadQuizComponent implements OnInit{
         this.quiz.getActiveQuizzesOfCategory(this.cId).subscribe(
           (data:any)=>{
             this.quizzes=data;
-            console.log(this.quizzes);
           },
           (error)=>{
             console.log(error);

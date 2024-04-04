@@ -7,6 +7,7 @@ import com.Exam.Backend.Service.quizService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,7 +32,11 @@ public class quizServiceImpl implements quizService {
             quiz2.setDescription(quiz.getDescription());
             quiz2.setNumberOfQuestions(quiz.getNumberOfQuestions());
             quiz2.setActive(quiz.isActive());
+            quiz2.setScheduledHour(quiz.getScheduledHour());
+            quiz2.setScheduledMinute(quiz.getScheduledMinute());
+            quiz2.setScheduledDate(quiz.getScheduledDate());
             return this.quizRepository.save(quiz2);
+
         }
         throw new Exception("Quiz Not Found!!");
     }
@@ -71,6 +76,7 @@ public class quizServiceImpl implements quizService {
     public List<Quiz> getActvieQuizzesOfCategory(Category category) {
         return this.quizRepository.findByCategoryAndActive(category,true);
     }
+
 
 
 }

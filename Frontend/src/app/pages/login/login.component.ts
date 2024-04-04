@@ -45,15 +45,10 @@ export class LoginComponent {
     
   this.loginService.tokenGeneration(this.loginDetails).subscribe(
     (data:any)=>{
-    console.log("Suceess");
-    console.log(data.token);
   this.loginService.tokenInLocalStorage(data.token);
 
     this.loginService.getCurrentUser().subscribe((user:any)=>{
       this.loginService.setUser(user);
-      console.log(user);
-      console.log(this.loginService.getUserRole());
-
       if(this.loginService.getUserRole()=="NORMAL"){
         this.router.navigate(['/userDashboard/0']);
       }
@@ -74,7 +69,5 @@ export class LoginComponent {
     })
   }
   );
-  
   }
-
 }

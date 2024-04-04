@@ -162,7 +162,6 @@ importQuestions() {
   this.papa.parse(this.selectedFile, {
     header: true,
     complete: (result) => {
-      console.log('Parsing complete. Result:', result);
       result.data.forEach((row: any) => {
         const newQuestion: Questions = {
           marks: row['Marks'],
@@ -178,7 +177,6 @@ importQuestions() {
         if(newQuestion.questionContent!=null && newQuestion.questionContent!=''){
           this.questionsService.addQuestion(newQuestion).subscribe(
             (data) => {
-              console.log('Question imported successfully:', data);
               this.loadQuestions();
             },
             (error) => {

@@ -118,7 +118,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
     this.papa.parse(this.selectedFile, {
       header: true,
       complete: (result) => {
-        console.log('Parsing complete. Result:', result);
         result.data.forEach((row: any) => {
           const newQuestion: QuizQuestion = {
             content: row['Content'],
@@ -132,7 +131,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
             }
           };
 
-          console.log('Adding question:', newQuestion);
           if(newQuestion.content!=='' && newQuestion.content!==null){
             this.questionService.addQuestion(newQuestion).subscribe(
               (data) => {
@@ -154,7 +152,6 @@ export class ViewQuizQuestionsComponent implements OnInit {
     this.questionService.getQuestionsOfQuiz(this.qId).subscribe(
       (data: any) => {
         this.questions = data;
-        console.log(this.questions);
       },
       (error) => {
         console.log(error);

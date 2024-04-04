@@ -25,6 +25,8 @@ import { UpdateQuestionsOfQuestionPaperComponent } from './pages/admin/update-qu
 import { AddQuestionPaperComponent } from './pages/admin/add-question-paper/add-question-paper.component';
 import { UpdateQuestionPaperComponent } from './pages/admin/update-question-paper/update-question-paper.component';
 import { ViewQuestionPaperComponent } from './pages/admin/view-question-paper/view-question-paper.component';
+import { ViewQuizResultsComponent } from './pages/admin/view-quiz-results/view-quiz-results.component';
+import { ViewAttemptedQuizResultComponent } from './pages/user/view-attempted-quiz-result/view-attempted-quiz-result.component';
 
 
 export const routes: Routes = [
@@ -55,6 +57,10 @@ export const routes: Routes = [
             {
                 path:'quiz-instructions/:qid',
                 component:QuizInstructionsComponent
+            },
+            {
+                path:'view-attempted-quiz/:qid',
+                component:ViewAttemptedQuizResultComponent
             }
         ]
     },
@@ -90,7 +96,14 @@ export const routes: Routes = [
             {
                 path:'update-quiz/:qid',
                 component:UpdateQuizComponent
-            },{
+            },
+            {
+                path:'quiz-result/:qid',
+                component:ViewQuizResultsComponent
+            }
+            
+            
+            ,{
                 path:'view-questions/:id/:title',
                 component:ViewQuizQuestionsComponent
             },

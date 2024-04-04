@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../../../components/navbar/navbar.component";
 import { LocationStrategy } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { QuestionService } from '../../../services/question.service';
 import {MatCardModule} from '@angular/material/card';
 import {MatListModule} from '@angular/material/list';
@@ -15,6 +15,8 @@ import {MatRadioModule} from '@angular/material/radio';
 import Swal from 'sweetalert2';
 import { RouterLink } from '@angular/router';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { LoginService } from '../../../services/login.service';
+import { QuizResultService } from '../../../services/quiz-result.service';
 
 
 
@@ -30,7 +32,8 @@ RouterLink,MatProgressSpinnerModule]
 export class StartQuizComponent implements OnInit {
 
     constructor(private locationStatergy:LocationStrategy,private route:ActivatedRoute,
-        private questionService:QuestionService){}
+        private questionService:QuestionService,private loginService: LoginService, private quizResultService: QuizResultService,
+        private router: Router){}
 
     qid:any;
     questions=[
@@ -118,18 +121,39 @@ export class StartQuizComponent implements OnInit {
     public evalQuiz(){
 
         this.questionService.evalQuiz(this.questions).subscribe((data:any)=>{
-            console.log(data);
             this.marksGot=data.marksGot;
         this.correctAnswers=data.correctAnswers;
         this.attempted=data.attempts;
-        },
-        (error)=>{
-            console.log(error);
-        })
-        this.isSubmit=true;
+        const username = this.loginService.getUser().username;
+
         
-    }
+        const quizResult = {
+          username: username,
+          marksGot: this.marksGot,
+          attempted: this.attempted,
+          correctAnswers: this.correctAnswers,
+          quiz: {
+            qid: this.qid
+          }
+        };
 
-
-
+        this.quizResultService.saveQuizResult(quizResult).subscribe(
+          (result: any) => {
+            console.log('Quiz result saved successfully:');
+          },
+          (error: any) => {
+            console.error('Failed to save quiz result:', error);
+          }
+        );
+      },
+      (error: any) => {
+        console.error(error);
+      }
+    );
+    this.isSubmit = true;
+  }
+  
 }
+
+
+

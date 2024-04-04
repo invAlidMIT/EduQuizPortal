@@ -35,7 +35,7 @@ export class AddQuestionPaperComponent  {
     faculty: "",
     time: "",
     note: "",
-    maxMarks: 0
+    maxMarks: 0,
   }
 
   

@@ -46,7 +46,6 @@ export class AddQestionsToQuestinPaperComponent implements OnInit{
 
   addQuestion() {
     this.question.questionPaper.qid = this.questionPaperId;
-    console.log(this.question);
 
     this.questionsService.addQuestion(this.question).subscribe(
       (data) => {

@@ -49,7 +49,6 @@ export class UpdateQuestionsOfQuestionPaperComponent implements OnInit {
     console.log(this.updateQuestion);
     this.questionsService.updateQuestion(this.question.qid, this.question).subscribe(
       (updatedQuestion) => {
-        console.log('Question updated successfully:', updatedQuestion);
         this.router.navigate(['/adminDashboard/questionPapers/view-questionPaper-questions',this.questionPaperId]); 
       },
       (error) => {

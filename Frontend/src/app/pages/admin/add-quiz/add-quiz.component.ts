@@ -33,7 +33,6 @@ export class AddQuizComponent implements OnInit{
   ngOnInit(): void {
     this.categoryService.categories().subscribe((data:any)=>{
         this.categories=data;
-        console.log(this.categories);
     },
     (error)=>{
       console.log(error);

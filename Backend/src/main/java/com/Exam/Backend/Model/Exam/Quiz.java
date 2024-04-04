@@ -3,6 +3,7 @@ package com.Exam.Backend.Model.Exam;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -23,12 +24,52 @@ public class Quiz {
 
     private boolean active=false;
 
+    private int scheduledHour;
+    private int scheduledMinute;
+    private Date scheduledDate;
+
+    public Date getScheduledDate() {
+        return scheduledDate;
+    }
+
+    public void setScheduledDate(Date scheduledDate) {
+        this.scheduledDate = scheduledDate;
+    }
+
+    public int getScheduledHour() {
+        return scheduledHour;
+    }
+
+    public void setScheduledHour(int scheduledHour) {
+        this.scheduledHour = scheduledHour;
+    }
+
+    public int getScheduledMinute() {
+        return scheduledMinute;
+    }
+
+    public void setScheduledMinute(int scheduledMinute) {
+        this.scheduledMinute = scheduledMinute;
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     private Category category;
 
     @OneToMany(mappedBy = "quiz",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
     private List<Question> questions=new ArrayList<>();
+
+    @OneToMany(mappedBy = "quiz",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JsonIgnore
+    private List<quizResult> quizResults=new ArrayList<>();
+
+    public List<quizResult> getQuizResults() {
+        return quizResults;
+    }
+
+    public void setQuizResults(List<quizResult> quizResults) {
+        this.quizResults = quizResults;
+    }
 
     public Quiz() {
     }

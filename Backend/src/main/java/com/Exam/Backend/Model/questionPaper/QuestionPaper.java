@@ -32,6 +32,7 @@ public class QuestionPaper {
     private String time;
     private String note;
     private int maxMarks;
+    private String co1,co2,co3,co4;
 
     @OneToMany(mappedBy = "questionPaper",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
