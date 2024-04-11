@@ -1,55 +1,53 @@
 <app-navbar  (toggleSidebarEvent)="toggleSidebar()"></app-navbar>
     <mat-drawer-container autosize>
-    <mat-drawer #drawer [opened]="isSidebarOpen" mode="side" position="start">
+    <mat-drawer #drawer opened="isSidebarOpen" [style.width]="sidebarWidth()" mode="side" position="start">
     <mat-nav-list>
-        <mat-list-item>
-            <button mat-button routerLink="/adminDashboard">
+        <mat-list-item routerLinkActive="active" [class.active]="dashboardActive" class="menu-item" >
+            <button mat-button (click)="toggleDashboardActive()" routerLink="/adminDashboard">
                 <mat-icon>dashboard</mat-icon>
-                Dashboard 
+               <span>Dashboard</span>  
             </button>
         </mat-list-item>
-        <mat-list-item>
-            <button mat-button routerLink="/adminDashboard/profile">
+        <mat-list-item routerLinkActive="active" class="menu-item">
+            <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/profile">
                 <mat-icon>account_circle</mat-icon>
-                Profile
+               <span>Profile</span> 
             </button>
         </mat-list-item>
-       <mat-list-item>
-        <button mat-button routerLink="/adminDashboard/categories">
+       <mat-list-item routerLinkActive="active" class="menu-item">
+        <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/categories">
             <mat-icon>category</mat-icon> 
-            Quiz Categories
+            <span>Quiz Categories</span>
         </button>
        </mat-list-item>
-       <mat-list-item>
-        <button mat-button routerLink="/adminDashboard/add-category">
+       <mat-list-item routerLinkActive="active" class="menu-item">
+        <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/add-category">
             <mat-icon>add_circle_outline</mat-icon>
-            Add Category 
+            <span>Category</span>  
         </button>
        </mat-list-item>
-        <mat-list-item>
-            <button mat-button routerLink="/adminDashboard/quiz">
+        <mat-list-item routerLinkActive="active" class="menu-item">
+            <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/quiz">
                 <mat-icon>quiz</mat-icon>
-                Quizzes
+                <span>Quizzes</span>
             </button>
         </mat-list-item>
-        <mat-list-item>
-            <button mat-button routerLink="/adminDashboard/add-quiz">
+        <mat-list-item routerLinkActive="active" class="menu-item">
+            <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/add-quiz">
                 <mat-icon>add</mat-icon>
-                Add Quiz
+                <span>Add Quiz</span>
             </button>
         </mat-list-item>
-       <mat-list-item>
-        <button mat-button routerLink="/adminDashboard/questionPapers">
+       <mat-list-item routerLinkActive="active" class="menu-item">
+        <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/questionPapers">
             <mat-icon>description</mat-icon>
-            Question Papers
+            <span>Question Papers</span>
         </button>
        </mat-list-item>
-        <mat-list-item>
-            <button mat-button routerLink="/adminDashboard/add-question-paper">
-
+        <mat-list-item routerLinkActive="active" class="menu-item">
+            <button mat-button (click)="toggleDashboardDeActive()" routerLink="/adminDashboard/add-question-paper">
                     <mat-icon>add</mat-icon>
-                    Add Question Paper
-             
+                    <span>Add Question Paper</span>
             </button>
         </mat-list-item>
     </mat-nav-list>
