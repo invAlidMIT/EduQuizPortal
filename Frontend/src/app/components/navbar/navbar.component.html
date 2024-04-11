@@ -1,11 +1,8 @@
 <p>
   <mat-toolbar style="background-color: #333;color: white;">
-    <a mat-icon-button 
-    routerLink="/"
-    class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu_book</mat-icon>
-    </a>
-
+    <button (click)="toggleSidebar()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+  </button>
     <span *ngIf="isLoggedIn" style="margin-left: 5px;">
       {{login.getUser().username}}
     </span>

@@ -39,7 +39,6 @@ export class AddQuestionPaperComponent  {
   }
 
   
-
   addQuestionPaper(){
       this.qpService.addQuestionPaper(this.questionPaper).subscribe((data)=>{
         Swal.fire("Success","Question Paper Added","success");

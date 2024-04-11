@@ -2,15 +2,12 @@
 <div class="bootstrap-wrapper" *ngIf="!isSubmit">
     <div class="container-fluid">
         <div class="row">
-        <div class="col-md-2">
-            <h2>Instructions</h2>
-        </div>
-        <div class="col-md-8 mt-4">
+        <div class="col-md-10">
+                <h2 class="text-center" style="margin-bottom: 7px;color: white;">{{questions[0].quiz.title}}</h2>
+           
             <ng-container *ngIf="questions">
-               <h2>{{questions[0].quiz.title}}</h2>
-
             </ng-container>
-            <mat-card *ngFor="let q of questions;;let i = index" class="mt-2" class="mat-card">
+            <mat-card *ngFor="let q of questions;;let i = index" class="mat-card mt-2">
                 <mat-card-content>
                     <p>Q) {{i+1}}<span [innerHTML]="q.content"></span></p>
                 </mat-card-content>
@@ -49,8 +46,11 @@
             </div>
         </div>
         <div class="col-md-2">
-            <h2>Progress</h2>
+            
             <mat-card class="mat-card">
+                <mat-card-header>
+                    <h2 style="margin-bottom: 7px;margin-left: 55px;">Progress</h2>
+                </mat-card-header>
                 <mat-card-content>
                     <h3 style="text-align: center;"> {{getFormattedTime()}}</h3>
                     <mat-spinner 

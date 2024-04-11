@@ -84,7 +84,8 @@ public class questionController {
             if(question.getAnswer().trim().equals(q.getGivenAnswer())){
                     correctAnswers++;
                     double marksForSingle=Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
-                    marksGot+=marksForSingle;
+                    marksGot+= (int) marksForSingle;
+                    marksGot++;
             }
             if(q.getGivenAnswer()!=null && q.getGivenAnswer()!=""){
                     attempts++;

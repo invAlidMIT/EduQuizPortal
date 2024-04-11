@@ -1,4 +1,4 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject,Output, EventEmitter } from '@angular/core';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatToolbarModule} from '@angular/material/toolbar';
@@ -15,9 +15,11 @@ import { ThemeService } from '../../services/theme.service';
   styleUrl: './navbar.component.css'
 })
 export class NavbarComponent implements OnInit{
+  
   constructor(public login:LoginService,private route:Router){
   }
 
+  @Output() toggleSidebarEvent = new EventEmitter<void>();
   isLoggedIn=false;
   user=null;
   themeService:ThemeService=inject(ThemeService);
@@ -41,5 +43,8 @@ export class NavbarComponent implements OnInit{
     this.themeService.updateTheme();
     this.isDarkTheme=this.themeService.themeSignal()==='dark';
 
+  }
+  toggleSidebar() {
+    this.toggleSidebarEvent.emit();
   }
 }

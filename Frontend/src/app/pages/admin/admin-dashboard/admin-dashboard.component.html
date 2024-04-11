@@ -1,13 +1,63 @@
-<app-navbar></app-navbar>
-<div class="bootstrap-wrapper">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-2">
-                <app-sidebar></app-sidebar>
-            </div>
-            <div class="col-md-10">
-                <router-outlet></router-outlet>
-            </div>
-        </div>
-    </div>
-</div>
+<app-navbar  (toggleSidebarEvent)="toggleSidebar()"></app-navbar>
+    <mat-drawer-container autosize>
+    <mat-drawer #drawer [opened]="isSidebarOpen" mode="side" position="start">
+    <mat-nav-list>
+        <mat-list-item>
+            <button mat-button routerLink="/adminDashboard">
+                <mat-icon>dashboard</mat-icon>
+                Dashboard 
+            </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button routerLink="/adminDashboard/profile">
+                <mat-icon>account_circle</mat-icon>
+                Profile
+            </button>
+        </mat-list-item>
+       <mat-list-item>
+        <button mat-button routerLink="/adminDashboard/categories">
+            <mat-icon>category</mat-icon> 
+            Quiz Categories
+        </button>
+       </mat-list-item>
+       <mat-list-item>
+        <button mat-button routerLink="/adminDashboard/add-category">
+            <mat-icon>add_circle_outline</mat-icon>
+            Add Category 
+        </button>
+       </mat-list-item>
+        <mat-list-item>
+            <button mat-button routerLink="/adminDashboard/quiz">
+                <mat-icon>quiz</mat-icon>
+                Quizzes
+            </button>
+        </mat-list-item>
+        <mat-list-item>
+            <button mat-button routerLink="/adminDashboard/add-quiz">
+                <mat-icon>add</mat-icon>
+                Add Quiz
+            </button>
+        </mat-list-item>
+       <mat-list-item>
+        <button mat-button routerLink="/adminDashboard/questionPapers">
+            <mat-icon>description</mat-icon>
+            Question Papers
+        </button>
+       </mat-list-item>
+        <mat-list-item>
+            <button mat-button routerLink="/adminDashboard/add-question-paper">
+
+                    <mat-icon>add</mat-icon>
+                    Add Question Paper
+             
+            </button>
+        </mat-list-item>
+    </mat-nav-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <div style="min-height: 1500px;width: 100%;">
+      <router-outlet></router-outlet>
+      </div>
+    </mat-drawer-content>
+    </mat-drawer-container>
