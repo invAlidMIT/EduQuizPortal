@@ -1,13 +1,13 @@
 <mat-card class="mat-card">
-    <mat-card-title class="text-center mt-4">Update Quiz</mat-card-title>
+    <mat-card-title class="text-center mt-4 theme-text">Update Quiz</mat-card-title>
     <div class="container">
     <div class="row">
         <div class="col-md-10 offset-md-1">
 
             <form (ngSubmit)="updateQuiz()" *ngIf="quiz" class="text-center mt-4">
                 <mat-form-field class="w100" appearance="outline">
-                    <mat-label>Title</mat-label>
-                    <input 
+                    <mat-label class="theme-text">Title</mat-label>
+                    <input class="theme-text"
                     [(ngModel)]="quiz.title"
                     type="text" placeholder="enter title" 
                     name="Title" matInput
@@ -15,8 +15,8 @@
                     >
                     </mat-form-field>
                     <mat-form-field class="w100" appearance="outline">
-                        <mat-label>Description</mat-label>
-                        <textarea 
+                        <mat-label class="theme-text">Description</mat-label>
+                        <textarea class="theme-text"
                         [(ngModel)]="quiz.description"
                         placeholder="enter description" 
                         rows="10"
@@ -26,8 +26,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="w100" appearance="outline">
-                                    <mat-label>Number Of Questions</mat-label>
-                                    <input 
+                                    <mat-label class="theme-text">Number Of Questions</mat-label>
+                                    <input class="theme-text"
                                     [(ngModel)]="quiz.numberOfQuestions"
                                     type="text" placeholder="enter number of questions" 
                                     name="numberOfQuestions" matInput required>
@@ -35,8 +35,8 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="w100" appearance="outline">
-                                    <mat-label>Maximum Marks</mat-label>
-                                    <input 
+                                    <mat-label class="theme-text">Maximum Marks</mat-label>
+                                    <input class="theme-text"
                                     [(ngModel)]="quiz.maxMarks"
                                     type="text" placeholder="enter maximum marks" 
                                     name="Maximum Marks" matInput required>
@@ -54,8 +54,8 @@
       <br/>
       <section class="mb-4 mt-4">
         <mat-form-field class="w100" appearance="outline">
-            <mat-label>Schedule Time (Optional)</mat-label>
-            <input matInput [matDatetimepicker]="picker" placeholder="Choose date and time" [(ngModel)]="scheduledTime">
+            <mat-label class="theme-text">Schedule Time (Optional)</mat-label>
+            <input matInput class="theme-text" [matDatetimepicker]="picker" placeholder="Choose date and time" [(ngModel)]="scheduledTime">
             <mat-datetimepicker-toggle matSuffix [for]="picker"></mat-datetimepicker-toggle>
             <mat-datetimepicker #picker type="datetime"></mat-datetimepicker>
           </mat-form-field>
@@ -70,7 +70,7 @@
         </mat-select>
       </mat-form-field>
     </section>
-    <div class="container text-center">
+    <div class="container text-center" style="margin-bottom: 7px;">
         <button type="submit" mat-raised-button color="primary">
                 Update
         </button>

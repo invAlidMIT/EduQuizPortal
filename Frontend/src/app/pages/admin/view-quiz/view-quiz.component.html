@@ -1,8 +1,8 @@
 <mat-card *ngFor="let quiz of quizzes" style="margin-top: 10px;" class="mat-card">
     <mat-card-header>
         <div mat-card-avatar class="example-header-image"></div>
-        <mat-card-title>{{quiz.title}}</mat-card-title>
-        <mat-card-subtitle>{{quiz.category.title}}</mat-card-subtitle>
+        <mat-card-title class="theme-text">{{quiz.title}}</mat-card-title>
+        <mat-card-subtitle class="theme-text">{{quiz.category.title}}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>{{quiz.description}}</mat-card-content>
     <mat-card-actions>

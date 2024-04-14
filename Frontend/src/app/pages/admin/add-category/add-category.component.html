@@ -1,17 +1,17 @@
 <div class="bootstrap-wrapper">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <mat-card class="mat-card">
-                <h1 class="text-center mt theme">Add New Category</h1>
+            <mat-card class="mat-card mt-4">
+                <h1 class="text-center mt theme-text">Add New Category</h1>
                 <form (ngSubmit)="formSubmit()" class="text-center">
                     <mat-form-field class="w100" appearance="outline">
-                        <mat-label>Title</mat-label>
+                        <mat-label class="theme-text">Title</mat-label>
                         <input type="text" placeholder="enter title" 
                         [(ngModel)]="category.title"
                         name="Title" matInput>
                     </mat-form-field>
                     <mat-form-field class="w100" appearance="outline">
-                        <mat-label>Description</mat-label>
+                        <mat-label class="theme-text">Description</mat-label>
                         <textarea placeholder="enter Description"
                         [(ngModel)]="category.description"
                         rows="10"

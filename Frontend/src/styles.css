@@ -4,11 +4,11 @@
   }
 
   .dark .mat-card{
-    background-color: white !important;
-    color: black !important;
+    background-color: #333 !important;
+    color: white !important;
   }
 
-  .dark .theme{
+  .dark .theme-text{
     color: white !important;
     background-color: #333 !important;
   }
@@ -17,19 +17,19 @@
     background-color: #fff !important;
   }
 
-.light .theme{
-  color: black !important;
+.light .theme-text{
+  color: #333 !important;
   background-color: white !important;
 }
 
   .light .mat-card {
-    background-color: #333 !important;
-    color: white !important;
+    background-color: white !important;
+    color: #333 !important;
   }
 
 .light .mat-toolbar{
   background-color: white !important;
-  color: black  !important;
+  color: #333  !important;
 }
 
 .light .example-icon #github-icon {

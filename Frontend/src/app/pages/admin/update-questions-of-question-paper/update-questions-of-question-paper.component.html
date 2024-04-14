@@ -1,7 +1,8 @@
-<div class="container">
-    <h2>Update Question</h2>
+<div class="container mt-2">
+  <mat-card class="mat-card">
+    <h2 class="theme-text text-center">Update Question</h2>
     <form>
-      <mat-form-field class="w100 mt-2">
+      <mat-form-field class="w100 mt-2" style="width: 100%;height: auto;">
         <mat-label>Write the Question</mat-label>
         <textarea rows="7" name="questionContent"
         [(ngModel)]="question.questionContent"
@@ -40,4 +41,5 @@
         <button type="submit" (click)="updateQuestion()" color="primary"   mat-raised-button>Update</button>
       </div>
     </form>
+  </mat-card>
   </div>

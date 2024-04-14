@@ -1,12 +1,12 @@
 <mat-card class="mat-card">
-    <mat-card-title class="text-center mt-4">Add Quiz</mat-card-title>
+    <mat-card-title class="text-center mt-4 theme-text">Add Quiz</mat-card-title>
     <div class="container">
     <div class="row">
         <div class="col-md-10 offset-md-1">
 
             <form (ngSubmit)="addQuiz()" class="text-center mt-4">
                 <mat-form-field class="w100" appearance="outline">
-                    <mat-label>Title</mat-label>
+                    <mat-label class="theme-text">Title</mat-label>
                     <input 
                     [(ngModel)]="quizData.title"
                     type="text" placeholder="enter title" 
@@ -15,7 +15,7 @@
                     >
                     </mat-form-field>
                     <mat-form-field class="w100" appearance="outline">
-                        <mat-label>Description</mat-label>
+                        <mat-label class="theme-text">Description</mat-label>
                         <textarea 
                         [(ngModel)]="quizData.description"
                         placeholder="enter description" 
@@ -26,7 +26,7 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <mat-form-field class="w100" appearance="outline">
-                                    <mat-label>Number Of Questions</mat-label>
+                                    <mat-label class="theme-text">Number Of Questions</mat-label>
                                     <input 
                                     [(ngModel)]="quizData.numberOfQuestions"
                                     type="text" placeholder="enter number of questions" 
@@ -35,7 +35,7 @@
                             </div>
                             <div class="col-md-6">
                                 <mat-form-field class="w100" appearance="outline">
-                                    <mat-label>Maximum Marks</mat-label>
+                                    <mat-label class="theme-text">Maximum Marks</mat-label>
                                     <input 
                                     [(ngModel)]="quizData.maxMarks"
                                     type="text" placeholder="enter maximum marks" 

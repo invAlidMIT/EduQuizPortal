@@ -1,10 +1,10 @@
 <mat-card class="mat-card">
     <mat-list>
-      <div mat-subheader>All Categories</div>
+      <div mat-subheader class="theme-text text-center">All Categories</div>
       <mat-list-item *ngFor="let category of categories" class="category-item">
         <div class="list-item">
-        <mat-icon mat-list-icon>category</mat-icon>
-          <span>{{ category.title }}</span>
+        <mat-icon mat-list-icon class="theme-text">category</mat-icon>
+          <span class="theme-text">{{ category.title }}</span>
           <button mat-raised-button (click)="deleteCategory(category.cid)" color="warn" style="margin-left: 50px;font-size: small;width: 5px;height: 25px;" >Delete</button>
         </div>
         
