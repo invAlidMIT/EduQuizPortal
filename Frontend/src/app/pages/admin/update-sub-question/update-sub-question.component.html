@@ -1,0 +1,30 @@
+
+<div class="container">
+    <h2>Update Sub-Question</h2>
+  
+    <form (submit)="updateSubQuestion()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Marks</mat-label>
+        <input matInput placeholder="Marks" name="marks" [(ngModel)]="subQuestion.marks">
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>CO</mat-label>
+        <input matInput placeholder="CO" name="co" [(ngModel)]="subQuestion.co">
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>BTL</mat-label>
+        <input matInput placeholder="BTL" name="btl" [(ngModel)]="subQuestion.btl">
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width">
+        <mat-label>Question Content</mat-label>
+        <textarea matInput placeholder="Question Content" name="questionContent" [(ngModel)]="subQuestion.questionContent" rows="5"></textarea>
+      </mat-form-field>
+  
+  
+      <button mat-raised-button color="primary" type="submit">Update</button>
+    </form>
+  </div>
+  

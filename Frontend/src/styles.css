@@ -35,3 +35,10 @@
 .light .example-icon #github-icon {
   --github-icon-path: url(../../Frontend/src/assets/github-mark.svg);
 }
+
+.dark .mat-card{
+  border: 1px solid rgba(0, 0, 0, 0.4) !important;
+}
+.light .mat-card{
+  border: 1px solid rgba(0, 0, 0, 0.3) !important;
+}

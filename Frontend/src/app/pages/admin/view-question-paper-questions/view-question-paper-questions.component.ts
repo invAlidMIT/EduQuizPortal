@@ -11,6 +11,7 @@ import {MatButtonModule} from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Papa } from 'ngx-papaparse';
+import { SubQuestionService } from '../../../services/sub-question.service';
 
 @Component({
   selector: 'app-view-question-paper-questions',
@@ -60,7 +61,7 @@ questionPaper: QuestionPaper={
     }
   ]
 };
-questions: Questions[]=[
+questions: any[]=[
   {
     qid: 0,
     marks: 0,
@@ -81,7 +82,19 @@ questions: Questions[]=[
       note: '',
       maxMarks: 0,
       questions: []
-    }
+    },
+    subQuestion:[
+      {
+        qid: 0,
+        marks: 0,
+        co: "",
+        btl: "",
+        questionContent: "",
+        parentQuestion:{
+          qid:''
+        }
+      }
+    ]
   }
 ];
 
@@ -91,6 +104,7 @@ constructor(
   private questionsService: QuestionsService,
   private papa: Papa,
   private router: Router,
+  private subQuestionService: SubQuestionService,
 ) {
 }
 
@@ -114,13 +128,27 @@ loadQuestionPaperDetails(): void {
 
 loadQuestions(): void {
   this.questionsService.getQuestionsOfQuestionPaper(this.questionPaperId).subscribe(
-    (data: Questions[]) => {
+    (data: any[]) => {
       this.questions = data;
+      this.loadSubQuestionsForQuestions();
     },
     error => {
       console.log('Error fetching questions:', error);
     }
   );
+}
+
+loadSubQuestionsForQuestions(): void {
+  this.questions.forEach(question => {
+    this.subQuestionService.getSubQuestionsOfParentQuestion(question.qid).subscribe(
+      (data: any[]) => {
+        question.subQuestions = data; 
+       },
+      error => {
+        console.log('Error fetching sub-questions:', error);
+      }
+    );
+  });
 }
 
 deleteQuestion(questionId: number): void {
@@ -136,6 +164,25 @@ deleteQuestion(questionId: number): void {
     );
   }
 }
+
+deleteSubQuestion(subQuestionId: number): void {
+  if (confirm('Are you sure you want to delete this sub-question?')) {
+    this.subQuestionService.deleteSubQuestion(subQuestionId).subscribe(
+      () => {
+      
+        this.questions.forEach(question => {
+          question.subQuestions = question.subQuestions.filter((subQuestion: { qid: number; }) => subQuestion.qid !== subQuestionId);
+        });
+        console.log('Sub-question deleted successfully.');
+      },
+      error => {
+        console.log('Error deleting sub-question:', error);
+      }
+    );
+  }
+}
+
+
 isImporting: boolean = false;
 
 handleFileInput(event: any) {

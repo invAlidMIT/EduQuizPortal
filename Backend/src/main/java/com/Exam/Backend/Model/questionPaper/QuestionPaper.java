@@ -36,6 +36,6 @@ public class QuestionPaper {
 
     @OneToMany(mappedBy = "questionPaper",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<Questions> questions=new ArrayList<>();
+    private List<parentQuestion> questions=new ArrayList<>();
 
 }

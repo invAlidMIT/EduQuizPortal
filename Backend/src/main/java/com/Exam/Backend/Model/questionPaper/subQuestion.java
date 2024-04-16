@@ -11,7 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Setter
 @Getter
-public class Questions {
+public class subQuestion {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,6 +22,5 @@ public class Questions {
     private String questionContent;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    private QuestionPaper questionPaper;
-
+    private parentQuestion parentQuestion;
 }

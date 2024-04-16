@@ -1,6 +1,6 @@
 <app-navbar  (toggleSidebarEvent)="toggleSidebar()"></app-navbar>
-    <mat-drawer-container autosize>
-    <mat-drawer  #drawer opened="isSidebarOpen" [style.width]="sidebarWidth()" mode="side" position="start">
+    <mat-drawer-container class="mat-card" autosize>
+    <mat-drawer class="mat-card"  #drawer opened="isSidebarOpen" [style.width]="sidebarWidth()" mode="side" position="start">
     <mat-nav-list class="theme-text">
         <mat-list-item  routerLinkActive="active" [class.active]="dashboardActive">
             <button mat-button class="theme-text" (click)="toggleDashboardActive()" routerLink="/adminDashboard">

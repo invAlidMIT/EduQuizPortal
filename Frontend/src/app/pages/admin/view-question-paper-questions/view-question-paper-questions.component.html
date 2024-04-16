@@ -7,7 +7,21 @@
                 <p><strong>CO:</strong> {{ question.co }}</p>
                 <p><strong>BTL:</strong> {{ question.btl }}</p>
                 <p><strong>Question Content:</strong> {{ question.questionContent }}</p>
-    </mat-card-content>
+                <div class="sub-questions" *ngIf="question.subQuestions && question.subQuestions.length > 0">
+                  <h3 class="theme" style="text-align: center;">Sub-Questions</h3>
+                  <div *ngFor="let subQuestion of question.subQuestions">
+                    <p><strong>Marks:</strong> {{ subQuestion.marks }}</p>
+                    <p><strong>CO:</strong> {{ subQuestion.co }}</p>
+                    <p><strong>BTL:</strong> {{ subQuestion.btl }}</p>
+                    <p><strong>Question Content:</strong> {{ subQuestion.questionContent }}</p>
+                    <mat-card-actions>
+                      <button mat-button [routerLink]="['/adminDashboard/updateSubQuestion', subQuestion.qid]" color="primary">Update</button>
+                      <button mat-button color="warn" (click)="deleteSubQuestion(subQuestion.qid)">Delete</button>
+                    </mat-card-actions>
+                  </div>
+                </div>
+        
+              </mat-card-content>
     <mat-card-actions>
       <button mat-button [routerLink]="['/adminDashboard/updateQuestionsOfQuestionPaper', questionPaperId, question.qid]" color="primary">Update</button>
 

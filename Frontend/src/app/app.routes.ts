@@ -27,6 +27,7 @@ import { UpdateQuestionPaperComponent } from './pages/admin/update-question-pape
 import { ViewQuestionPaperComponent } from './pages/admin/view-question-paper/view-question-paper.component';
 import { ViewQuizResultsComponent } from './pages/admin/view-quiz-results/view-quiz-results.component';
 import { ViewAttemptedQuizResultComponent } from './pages/user/view-attempted-quiz-result/view-attempted-quiz-result.component';
+import { UpdateSubQuestionComponent } from './pages/admin/update-sub-question/update-sub-question.component';
 
 
 export const routes: Routes = [
@@ -138,6 +139,10 @@ export const routes: Routes = [
             {
                 path:'questionPapers/viewQuestionPaper/:qid',
                 component:ViewQuestionPaperComponent
+            },
+            {
+                path:'updateSubQuestion/:qid',
+                component:UpdateSubQuestionComponent
             }
             
 
