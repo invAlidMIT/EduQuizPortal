@@ -1,68 +1,84 @@
 <mat-card class="mat-card">
-    <div class="question-paper">
+  <div class="question-paper">
+    <div class="logo">
+    <img src="../../../../assets/rv_logo.png" alt="College Logo" class="college-logo">
+  </div>
+  <div class="qp-detials">
+      <div class="header">
+        <h1>{{ questionPaper.collegeName }}</h1>
+        <p>{{ questionPaper.institutionName }}</p>
+      </div>
+    
+      <div class="department">
+        <h2>{{ questionPaper.department }}</h2>
+      </div>
+    
+      <div class="evaluation">
+        <h3>{{ questionPaper.examType }}</h3>
+      </div>
 
-      <img src="../../../../assets/rv_logo.png" alt="College Logo" class="college-logo">
+      <div class="sem">
+        <p>{{ questionPaper.semester }}</p>
+      </div>
+    
+      <div class="test-details">
+        <h4>{{ questionPaper.test }} - {{ questionPaper.subjectCode }}</h4>
+      </div>
 
-        <div class="header">
-          <h1>{{ questionPaper.collegeName }}</h1>
-          <p>{{ questionPaper.institutionName }}</p>
-        </div>
-      
-        <div class="department">
-          <h2>{{ questionPaper.department }}</h2>
-        </div>
-      
-        <div class="evaluation">
-          <h3>{{ questionPaper.examType }}</h3>
-        </div>
+      <div class="faculty">
+        <p>{{ questionPaper.faculty }}</p>
+      </div>
+    
+      <div class="instructions">
+        <p>{{ questionPaper.time }}</p>
+        <p>{{ questionPaper.note }}</p>
+        <p>Max. Marks: {{ questionPaper.maxMarks }}</p>
+      </div>
 
-        <div class="sem">
-          <p>{{ questionPaper.semester }}</p>
-        </div>
-      
-        <div class="test-details">
-          <h4>{{ questionPaper.test }} - {{ questionPaper.subjectCode }}</h4>
-        </div>
-
-        <div class="faculty">
-          <p>{{ questionPaper.faculty }}</p>
-        </div>
-      
-        <div class="instructions">
-          <p>{{ questionPaper.time }}</p>
-          <p>{{ questionPaper.note }}</p>
-          <p>Max. Marks: {{ questionPaper.maxMarks }}</p>
-        </div>
-
-        
-        <div class="questions">
-          <table class="question-table">
-            <thead>
-              <tr>
-                <th>Q.No</th>
-                <th>Questions</th>
-                <th>Marks</th>
-                <th>CO</th>
-                <th>BTL</th>
-               
-              </tr>
-            </thead>
+    </div>
+      <div class="questions">
+        <table class="question-table">
+          <thead>
+            <tr>
+              <th>Q.No</th>
+              <th>Questions</th>
+              <th>Marks</th>
+              <th>CO</th>
+              <th>BTL</th>
+             
+            </tr>
+          </thead>
             <tbody>
-              <tr *ngFor="let question of questions; let i = index">
-                <td>{{i+1 }}</td>
-                <td>{{ question.questionContent }}</td>
-                <td>{{ question.marks }}</td>
-                <td>{{ question.co }}</td>
-                <td>{{ question.btl }}</td>
-                
-              </tr>
+              <ng-container *ngFor="let question of questions; let i = index">
+                <tr >
+                  <td>{{i+1 }}</td>
+                  <td>{{ question.questionContent}}</td>
+                  <td>{{ question.marks }}</td>
+                  <td>{{ question.co }}</td>
+                  <td>{{ question.btl }}</td>
+                  
+                </tr>
+                 <ng-container *ngFor="let subQuestion of question.subQuestions;let j = index">
+                <tr>
+                  <td></td>
+
+
+                  <td>{{ getSubQuestionNumber(j) }}. {{subQuestion.questionContent}}</td>
+                  <td>{{ subQuestion.marks }}</td>
+                  <td>{{ subQuestion.co }}</td>
+                  <td>{{ subQuestion.btl }}</td>
+                </tr>
+              </ng-container>
+              </ng-container>
+             
+             
             </tbody>
           </table>
         </div>
 
       </div>
     
-
+  
       <mat-card-actions>
         <div class="container text-center">
             <button mat-raised-button color="primary" class="mr" [routerLink]="['/adminDashboard/addQuestionsToQuestionPaper',questionPaperId]" >Add Questions</button>

@@ -10,7 +10,7 @@ import { QuestionsService } from '../../../services/questions.service';
 import { ActivatedRoute } from '@angular/router';
 import { QuestionPaperService } from '../../../services/question-paper.service';
 import * as html2pdf from 'html2pdf.js';
-
+import { SubQuestionService } from '../../../services/sub-question.service';
 
 @Component({
   selector: 'app-view-question-paper',
@@ -22,43 +22,48 @@ import * as html2pdf from 'html2pdf.js';
 })
 export class ViewQuestionPaperComponent implements OnInit{
 
+
   constructor(private questionsService:QuestionsService,
     private route:ActivatedRoute,
     private questionPaperService:QuestionPaperService,
-    private elementRef: ElementRef
+    private elementRef: ElementRef,
+    private subQuestionService: SubQuestionService,
     ){}
 
   ngOnInit(): void {
     this.questionPaperId=this.route.snapshot.params['qid'];
     this.loadQuestions();
     this.loadQuestionPaper();
+    
+  }
+
+    getSubQuestionNumber(index: number): string {
+    return String.fromCharCode(97 + index);
   }
 
   questionPaperId=0;
-  questions: Questions[]=[
+  questions=[
     {
-      qid: 0,
+      qid:0,
       marks: 0,
-      co: "",
-      btl: "",
-      questionContent: "",
-      questionPaper:{
-        qid: 0,
-        collegeName: '',
-        institutionName: '',
-        department: '',
-        examType: '',
-        semester: '',
-        test: '',
-        subjectCode: '',
-        faculty: '',
-        time: '',
-        note: '',
-        maxMarks: 0,
-        questions: [],
+    co: '',
+    btl: '',
+    questionContent: '',
+    questionPaper: {
+      qid: 0
+    },
+    subQuestions:[{
+      qid:'',
+      questionContent:'',
+      co:'',
+      btl:'',
+      marks:'',
+      parentQuestion:{
+        qid:''
       }
-    }
-  ];
+    }] 
+  },];
+  
 
   questionPaper={
     qid: 0,
@@ -77,8 +82,10 @@ export class ViewQuestionPaperComponent implements OnInit{
 
   loadQuestions(): void {
     this.questionsService.getQuestionsOfQuestionPaper(this.questionPaperId).subscribe(
-      (data: Questions[]) => {
+      (data: any[]) => {
         this.questions = data;
+        console.log(this.questions);
+        this.loadSubQuestionsForQuestions();
       },
       error => {
         console.log('Error fetching questions:', error);
@@ -97,9 +104,25 @@ export class ViewQuestionPaperComponent implements OnInit{
     )
   }
 
+  loadSubQuestionsForQuestions(): void {
+    this.questions.forEach(question => {
+      this.subQuestionService.getSubQuestionsOfParentQuestion(question.qid).subscribe(
+        (data: any[]) => {
+          question.subQuestions = data;
+          console.log(question.subQuestions);
+        },
+        error => {
+          console.log('Error fetching sub-questions:', error);
+        }
+      );
+    });
+  }
+
   downloadQuestionPaper() {
+    const logo = document.querySelector('.college-logo') as HTMLElement;
+  logo.style.display = 'none';
     const options = {
-      margin: [10,10],
+      margin: [5,5],
       filename: 'question_paper.pdf',
       image: { type: 'jpeg', quality: 0.98 },
       html2canvas: { width: 880, scale: 2 },
@@ -113,5 +136,6 @@ export class ViewQuestionPaperComponent implements OnInit{
       .from(element)
       .set(options)
       .save();
+      logo.style.display = 'block';
   }
 }

@@ -1,78 +1,77 @@
 .question-paper {
-    font-family: Arial, sans-serif;
-    width: 800px;
-    margin: 0 auto;
-    padding: 10px;
-  }
+  font-family: Arial, sans-serif;
+  width: 800px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.header {
+  font-weight: bold;
+  text-align: center;
   
-  .header {
-    font-weight: bold;
-    text-align: center;
-    
-  }
+}
+
+.department {
+  font-weight: bold;
+  text-align: center;
   
-  .department {
-    font-weight: bold;
-    text-align: center;
-    
-  }
+}
 
-  .sem{
-    font-weight: bold;
-    text-align: center;
-    
-  }
-
-  .test-details,
-  .evaluation {
-    font-weight: bold;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.sem{
+  font-weight: bold;
+  text-align: center;
   
-  .test-details h4 {
-    font-weight: bold;
-    margin: 0;
-    
-  }
+}
 
-  .faculty{
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
+.test-details,
+.evaluation {
+  font-weight: bold;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .instructions {
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    
-  }
-
-  .question-table {
-    width: 110%;
-    border-collapse: collapse;
-  }
-  .question-table th,
-  .question-table td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid black;
-  }
-  .question-table th:nth-child(2) {
-    width: 80%; 
-  }
+.test-details h4 {
+  font-weight: bold;
+  margin: 0;
   
-   .mr{
-    margin-right: 7px;
-   }
+}
 
-   .college-logo {
-    position: absolute;
-    top: 10px; 
-    left: 10px; 
-    width: 130px; 
-    height: 130px; 
-    margin-top: 40px;
-    margin-left: 120px;
+.faculty{
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.instructions {
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.question-table {
+  width: 110%;
+  border-collapse: collapse;
+}
+.question-table th,
+.question-table td {
+  padding: 8px;
+  text-align: center;
+  border: 1px solid black;
+}
+.question-table th:nth-child(2) {
+  width: 80%; 
+}
+
+ .mr{
+  margin-right: 7px;
+ }
+
+ .logo {
+  width: 10px;
+  height: 10px;
+}
+.college-logo{
+  width: 120px;
+  height: 120px;
 }

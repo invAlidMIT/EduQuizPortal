@@ -104,7 +104,7 @@ constructor(
   private questionsService: QuestionsService,
   private papa: Papa,
   private router: Router,
-  private subQuestionService: SubQuestionService,
+  private subQuestionService: SubQuestionService
 ) {
 }
 

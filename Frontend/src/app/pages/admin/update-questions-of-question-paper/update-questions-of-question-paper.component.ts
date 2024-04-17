@@ -9,6 +9,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { QuestionsService } from '../../../services/questions.service';
+import { SubQuestionService } from '../../../services/sub-question.service';
 
 @Component({
   selector: 'app-update-questions-of-question-paper',
@@ -20,22 +21,32 @@ import { QuestionsService } from '../../../services/questions.service';
 })
 export class UpdateQuestionsOfQuestionPaperComponent implements OnInit {
 
-  question= {
-    qid:0,
+  question:any= {
     marks: 0,
     co: '',
     btl: '',
     questionContent: '',
     questionPaper: {
       qid: 0
-    }
+    },
+    subQuestions: [{
+      qid:'',
+      questionContent:'',
+      co:'',
+      btl:'',
+      marks:'',
+      parentQuestion:{
+        qid:''
+      }
+    }] 
   };
   questionPaperId: number = 0;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private questionsService: QuestionsService
+    private questionsService: QuestionsService,
+    private subQuestionService:SubQuestionService
   ) { }
 
   ngOnInit(): void {
@@ -50,10 +61,38 @@ export class UpdateQuestionsOfQuestionPaperComponent implements OnInit {
     this.questionsService.updateQuestion(this.question.qid, this.question).subscribe(
       (updatedQuestion) => {
         this.router.navigate(['/adminDashboard/questionPapers/view-questionPaper-questions',this.questionPaperId]); 
+        this.addSubQuestions(this.question.qid);
       },
       (error) => {
         console.error('Error updating question:', error);
       }
     );
+  }
+
+  addSubQuestions(questionId: number) {
+   
+    this.question.subQuestions.forEach((subQuestion: any) => {
+      subQuestion.parentQuestion = { qid: questionId };
+      this.subQuestionService.addSubQuestion(subQuestion).subscribe(
+        (data) => {
+          console.log('Sub-question added successfully:', data);
+        },
+        (error) => {
+          console.error('Error adding sub-question:', error);
+        }
+      );
+    });
+
+    this.router.navigate(['/adminDashboard/questionPapers/viewQuestionPaper', this.questionPaperId]);
+  }
+
+  addSubQuestion() {
+
+    this.question.subQuestions.push({
+      marks: 0,
+      co: '',
+      btl: '',
+      questionContent: ''
+    });
   }
 }
