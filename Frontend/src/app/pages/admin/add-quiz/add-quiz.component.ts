@@ -87,6 +87,7 @@ export class AddQuizComponent implements OnInit{
     },
     (error)=>{
       Swal.fire("Error","Error occured!!","error");
+      console.log(error);
     })
   }
 }

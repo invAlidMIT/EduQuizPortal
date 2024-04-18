@@ -10,18 +10,21 @@ export class QuizService {
   constructor(private http: HttpClient) { }
 
   public display() {
-    return this.http.get(`${baseUrl}/quiz/`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/quiz/`,{headers});
   }
 
   public addQuiz(quiz: any) {
-    return this.http.post(`${baseUrl}/quiz/`, quiz);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.post(`${baseUrl}/quiz/`, quiz,{headers});
   }
 
   public deleteQuiz(qid: any) {
   
     const token = localStorage.getItem('token');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
-
     return this.http.delete(`${baseUrl}/quiz/${qid}`, { headers });
   }
 
