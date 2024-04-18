@@ -1,11 +1,19 @@
 package com.Exam.Backend.Model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 @Table(name = "roles")
 public class Role {
 
@@ -16,35 +24,4 @@ public class Role {
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "role")
     private Set<userRole> userRoles=new HashSet<>();
 
-    public Set<userRole> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(Set<userRole> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    public Role() {
-    }
-
-    public Role(Long roleId, String roleName) {
-        this.roleId = roleId;
-        this.roleName = roleName;
-    }
-
-    public Long getRoleId() {
-        return roleId;
-    }
-
-    public void setRoleId(Long roleId) {
-        this.roleId = roleId;
-    }
-
-    public String getRoleName() {
-        return roleName;
-    }
-
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
-    }
 }

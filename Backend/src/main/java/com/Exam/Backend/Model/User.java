@@ -3,6 +3,10 @@ package com.Exam.Backend.Model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -12,6 +16,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "users")
+@NoArgsConstructor
+@AllArgsConstructor
+@Setter
+@Getter
 public class User implements UserDetails {
 
     @Id
@@ -30,17 +38,6 @@ public class User implements UserDetails {
     @JsonIgnore
     private Set<userRole> userRoles=new HashSet<>();
 
-    public Set<userRole> getUserRoles() {
-        return userRoles;
-    }
-
-    public void setUserRoles(Set<userRole> userRoles) {
-        this.userRoles = userRoles;
-    }
-
-    public User() {
-    }
-
     public User(Long id, String username, String password, String firstName, String lastName, String email, String phone, boolean enabled, String profile) {
         this.id = id;
         this.username = username;
@@ -53,17 +50,6 @@ public class User implements UserDetails {
         this.profile = profile;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
 
     @Override
     public boolean isAccountNonExpired() {
@@ -80,10 +66,6 @@ public class User implements UserDetails {
         return true;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
@@ -95,62 +77,5 @@ public class User implements UserDetails {
 
         return set;
     }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getProfile() {
-        return profile;
-    }
-
-    public void setProfile(String profile) {
-        this.profile = profile;
-    }
-
 
 }

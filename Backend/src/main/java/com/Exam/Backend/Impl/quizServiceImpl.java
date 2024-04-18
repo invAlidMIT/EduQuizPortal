@@ -32,9 +32,6 @@ public class quizServiceImpl implements quizService {
             quiz2.setDescription(quiz.getDescription());
             quiz2.setNumberOfQuestions(quiz.getNumberOfQuestions());
             quiz2.setActive(quiz.isActive());
-            quiz2.setScheduledHour(quiz.getScheduledHour());
-            quiz2.setScheduledMinute(quiz.getScheduledMinute());
-            quiz2.setScheduledDate(quiz.getScheduledDate());
             return this.quizRepository.save(quiz2);
 
         }
