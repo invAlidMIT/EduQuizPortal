@@ -31,12 +31,12 @@
 </div>
 
     <div *ngIf="!questions || questions.length === 0">
-      <mat-card class="mat-card">
-        <p style="text-align: center;font-size: larger;margin-top: 5px;font-weight: bold;">No questions found for this question paper.</p>
-      </mat-card>
+      <h2 class="theme-text">
+        <p style="text-align: center;font-size: larger;margin-top: 5px;font-weight: bold;">No questions found for this question paper</p>
+      </h2>
       
     </div>
-    <button mat-raised-button color="primary" [routerLink]="['/adminDashboard/addQuestionsToQuestionPaper',questionPaperId]" style="margin-top: 10px;margin-left: 450px;margin-bottom: 5px;" >Add</button>
+    <button  mat-raised-button color="primary" [routerLink]="['/adminDashboard/addQuestionsToQuestionPaper',questionPaperId]" style="margin-top: 10px;margin-left: 550px;margin-bottom: 5px;" >Add</button>
     <input type="file" (change)="handleFileInput($event)" #fileInput style="display: none;" id="fileInput">
 
 <button mat-raised-button color="warn" [disabled]="isImporting" (click)="fileInput.click()" style="margin-top: 10px;margin-left: 10px;margin-bottom: 5px;" >

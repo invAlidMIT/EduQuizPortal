@@ -207,6 +207,7 @@ importQuestions() {
   console.log('Selected file:', this.selectedFile);
 
   this.papa.parse(this.selectedFile, {
+    delimiter: '|', 
     header: true,
     complete: (result) => {
       result.data.forEach((row: any) => {
