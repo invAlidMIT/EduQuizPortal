@@ -10,11 +10,15 @@ export class CategoryService {
   constructor(private http:HttpClient) { }
 
   public categories(){
-    return this.http.get(`${baseUrl}/category/`);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${baseUrl}/category/`,{headers});
   }
 
   public addCategory(category: any){
-      return this.http.post(`${baseUrl}/category/`,category);
+    const token = localStorage.getItem('token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+      return this.http.post(`${baseUrl}/category/`,category,{headers});
   }
 
   public deleteCategory(cid:number){
