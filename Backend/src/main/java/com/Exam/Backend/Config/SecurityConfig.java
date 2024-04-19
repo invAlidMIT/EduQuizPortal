@@ -32,8 +32,8 @@ public class SecurityConfig {
         http.csrf(csrf -> csrf.disable())
                 .authorizeRequests().
                 requestMatchers("/auth/login").permitAll()
-                .requestMatchers("/auth/currentUser").authenticated()
-                .requestMatchers("/user/**").authenticated()
+                .requestMatchers("/auth/currentUser").permitAll()
+                .requestMatchers("/user/**").permitAll()
                 .requestMatchers("/category/**").authenticated()
                 .requestMatchers("/quiz/**").authenticated()
                 .requestMatchers("/question/**").authenticated()
