@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container text-center">
     <h2>Update Sub-Question</h2>
   
     <form (submit)="updateSubQuestion()">
@@ -18,11 +18,12 @@
         <input matInput placeholder="BTL" name="btl" [(ngModel)]="subQuestion.btl">
       </mat-form-field>
   
-      <mat-form-field class="example-full-width">
+      <div>
+      <mat-form-field style="width: 50%;">
         <mat-label>Question Content</mat-label>
         <textarea matInput placeholder="Question Content" name="questionContent" [(ngModel)]="subQuestion.questionContent" rows="5"></textarea>
       </mat-form-field>
-  
+    </div>
   
       <button mat-raised-button color="primary" type="submit">Update</button>
     </form>

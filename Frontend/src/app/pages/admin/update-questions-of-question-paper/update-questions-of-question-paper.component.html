@@ -44,28 +44,4 @@
   </mat-card>
   </div>
 
-  <div class="mt-3 text-center" *ngFor="let subQuestion of question.subQuestions; let i = index">
-    <hr>
-    <mat-form-field style="margin-right: 20px;">
-      <mat-label class="theme-text">Sub-Question {{ i + 1 }}</mat-label>
-      <input type="text" name="Sub-Question {{ i + 1 }}" matInput [(ngModel)]="subQuestion.questionContent">
-    </mat-form-field>
-    <mat-form-field style="margin-right: 20px;">
-      <mat-label class="theme-text">Marks</mat-label>
-      <input type="number" name="Marks" matInput [(ngModel)]="subQuestion.marks">
-    </mat-form-field>
-    <mat-form-field style="margin-right: 20px;">
-      <mat-label class="theme-text">CO</mat-label>
-      <input type="text" matInput  name="CO" [(ngModel)]="subQuestion.co">
-    </mat-form-field>
-    <mat-form-field style="margin-right: 20px;">
-      <mat-label class="theme-text">BTL</mat-label>
-      <input type="text" matInput name="BTL" [(ngModel)]="subQuestion.btl">
-    </mat-form-field>
-  </div>
-
-
-  <div class="container text-center mt-3">
-    <button mat-raised-button color="primary" (click)="addSubQuestion()">Add Sub-Question</button>
-  </div>
-
+  

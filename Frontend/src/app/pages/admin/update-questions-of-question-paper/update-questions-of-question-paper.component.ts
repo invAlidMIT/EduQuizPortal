@@ -61,7 +61,7 @@ export class UpdateQuestionsOfQuestionPaperComponent implements OnInit {
     this.questionsService.updateQuestion(this.question.qid, this.question).subscribe(
       (updatedQuestion) => {
         this.router.navigate(['/adminDashboard/questionPapers/view-questionPaper-questions',this.questionPaperId]); 
-        this.addSubQuestions(this.question.qid);
+    
       },
       (error) => {
         console.error('Error updating question:', error);
@@ -69,30 +69,4 @@ export class UpdateQuestionsOfQuestionPaperComponent implements OnInit {
     );
   }
 
-  addSubQuestions(questionId: number) {
-   
-    this.question.subQuestions.forEach((subQuestion: any) => {
-      subQuestion.parentQuestion = { qid: questionId };
-      this.subQuestionService.addSubQuestion(subQuestion).subscribe(
-        (data) => {
-          console.log('Sub-question added successfully:', data);
-        },
-        (error) => {
-          console.error('Error adding sub-question:', error);
-        }
-      );
-    });
-
-    this.router.navigate(['/adminDashboard/questionPapers/viewQuestionPaper', this.questionPaperId]);
-  }
-
-  addSubQuestion() {
-
-    this.question.subQuestions.push({
-      marks: 0,
-      co: '',
-      btl: '',
-      questionContent: ''
-    });
-  }
 }
