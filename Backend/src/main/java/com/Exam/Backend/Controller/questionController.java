@@ -55,7 +55,7 @@ public class questionController {
             List<Question> questions = quiz.getQuestions();
 
             if (questions.size() > Integer.parseInt(quiz.getNumberOfQuestions())) {
-                questions = questions.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()) + 1);
+                questions = questions.subList(0, Integer.parseInt(quiz.getNumberOfQuestions()));
             }
 
             Collections.shuffle(questions);
@@ -85,7 +85,6 @@ public class questionController {
                     correctAnswers++;
                     double marksForSingle=Double.parseDouble(questions.get(0).getQuiz().getMaxMarks())/questions.size();
                     marksGot+= (int) marksForSingle;
-                    marksGot++;
             }
             if(q.getGivenAnswer()!=null && q.getGivenAnswer()!=""){
                     attempts++;
