@@ -51,22 +51,22 @@
             <tbody>
               <ng-container *ngFor="let question of questions; let i = index">
                 <tr >
-                  <td>{{i+1 }}</td>
-                  <td>{{ question.questionContent}}</td>
-                  <td>{{ question.marks }}</td>
-                  <td>{{ question.co }}</td>
-                  <td>{{ question.btl }}</td>
+                  <td *ngIf="question.questionContent">{{i+1 }}</td>
+                  <td *ngIf="question.questionContent">{{ question.questionContent}}</td>
+                  <td *ngIf="question.questionContent">{{ question.marks }}</td>
+                  <td *ngIf="question.questionContent">{{ question.co }}</td>
+                  <td *ngIf="question.questionContent">{{ question.btl }}</td>
                   
                 </tr>
                  <ng-container *ngFor="let subQuestion of question.subQuestions;let j = index">
                 <tr>
-                  <td></td>
+                  <td *ngIf="subQuestion.questionContent"></td>
 
 
-                  <td>{{ getSubQuestionNumber(j) }}. {{subQuestion.questionContent}}</td>
-                  <td>{{ subQuestion.marks }}</td>
-                  <td>{{ subQuestion.co }}</td>
-                  <td>{{ subQuestion.btl }}</td>
+                  <td *ngIf="subQuestion.questionContent">{{ getSubQuestionNumber(j) }}. {{subQuestion.questionContent}}</td>
+                  <td *ngIf="subQuestion.questionContent">{{ subQuestion.marks }}</td>
+                  <td *ngIf="subQuestion.questionContent">{{ subQuestion.co }}</td>
+                  <td *ngIf="subQuestion.questionContent">{{ subQuestion.btl }}</td>
                 </tr>
               </ng-container>
               </ng-container>

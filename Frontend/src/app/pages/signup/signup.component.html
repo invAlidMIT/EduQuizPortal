@@ -7,34 +7,34 @@
                     <h1 class="text-center mt-4">Signup</h1>
                     <form (ngSubmit)="formSubmit()" novalidate>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Username (3-20 characters, alphanumeric)</mat-label>
+                            <mat-label class="theme-text">Username (3-20 characters, alphanumeric)</mat-label>
                             <input required minlength="3" maxlength="20" pattern="[a-zA-Z0-9]+" 
-                                name="username" [(ngModel)]="user.username" matInput placeholder="Enter Username">
+                                name="username" [(ngModel)]="user.username" matInput class="theme-text" placeholder="Enter Username">
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>First Name (2-20 characters, alphabetic)</mat-label>
+                            <mat-label class="theme-text">First Name (2-20 characters, alphabetic)</mat-label>
                             <input required minlength="2" maxlength="20" pattern="[a-zA-Z]+" 
-                                name="firstname" [(ngModel)]="user.firstName" matInput placeholder="Enter First Name">
+                                name="firstname" [(ngModel)]="user.firstName" matInput class="theme-text" placeholder="Enter First Name">
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Last Name (2-20 characters, alphabetic)</mat-label>
+                            <mat-label class="theme-text">Last Name (2-20 characters, alphabetic)</mat-label>
                             <input required minlength="2" maxlength="20" pattern="[a-zA-Z]+" 
-                                name="lastname" [(ngModel)]="user.lastName" matInput placeholder="Enter Last Name">
+                                name="lastname" [(ngModel)]="user.lastName" matInput class="theme-text" placeholder="Enter Last Name">
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Email</mat-label>
+                            <mat-label class="theme-text">Email</mat-label>
                             <input required type="email" 
-                                name="email" [(ngModel)]="user.email" matInput placeholder="Enter Email">
+                                name="email" [(ngModel)]="user.email" matInput class="theme-text" placeholder="Enter Email" class="theme-text">
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Phone (10 digits)</mat-label>
+                            <mat-label class="theme-text">Phone (10 digits)</mat-label>
                             <input required name="phone" type="tel" pattern="[0-9]{10}"
-                                [(ngModel)]="user.phone" matInput placeholder="Enter Phone Number">
+                                [(ngModel)]="user.phone" matInput placeholder="Enter Phone Number" class="theme-text">
                         </mat-form-field>
                         <mat-form-field class="full-width" appearance="outline">
-                            <mat-label>Password (at least 6 characters)</mat-label>
+                            <mat-label class="theme-text">Password (at least 6 characters)</mat-label>
                             <input required minlength="6" 
-                                name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Enter Password">
+                                name="password" [(ngModel)]="user.password" type="password" matInput placeholder="Enter Password" class="theme-text">
                         </mat-form-field>
                         <div class="container text-center">
                             <button type="submit" class="btn m-2" mat-raised-button color="primary">Signup</button>

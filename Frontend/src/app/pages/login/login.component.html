@@ -8,7 +8,7 @@
                 <form (ngSubmit)="submit()">
                     <mat-form-field class="full-width" 
                     appearance="outline">
-                        <mat-label>username</mat-label>
+                        <mat-label class="theme-text">username</mat-label>
                         <input required
                         name="username"
                         [(ngModel)]="loginDetails.username"
@@ -16,7 +16,7 @@
                     </mat-form-field>
                    <mat-form-field class="full-width"
                     appearance="outline">
-                        <mat-label>password</mat-label>
+                        <mat-label class="theme-text">password</mat-label>
                         <input required
                         [(ngModel)]="loginDetails.password" 
                         name="password"
