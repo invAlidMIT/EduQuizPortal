@@ -1,8 +1,9 @@
 <mat-card class="mat-card">
   <div class="question-paper">
+    <div class="headings">
     <div class="logo">
     <img src="../../../../assets/rv_logo.png" alt="College Logo" class="college-logo">
-  </div>
+    </div>
   <div class="qp-detials">
       <div class="header">
         <h1>{{ questionPaper.collegeName }}</h1>
@@ -10,31 +11,33 @@
       </div>
     
       <div class="department">
-        <h2>{{ questionPaper.department }}</h2>
+        <h2>Course: {{ questionPaper.department }}</h2>
       </div>
     
       <div class="evaluation">
-        <h3>{{ questionPaper.examType }}</h3>
+        <h3>Exam Type: {{ questionPaper.examType }}</h3>
       </div>
 
       <div class="sem">
-        <p>{{ questionPaper.semester }}</p>
+        <p>Semester: {{ questionPaper.semester }}</p>
       </div>
     
       <div class="test-details">
-        <h4>{{ questionPaper.test }} - {{ questionPaper.subjectCode }}</h4>
+        <h4>Subject: {{ questionPaper.test }}</h4>
+          <h4>Course Code: 
+            {{ questionPaper.subjectCode }}</h4>
       </div>
 
       <div class="faculty">
-        <p>{{ questionPaper.faculty }}</p>
+        <p>Faculty: {{ questionPaper.faculty }}</p>
       </div>
     
       <div class="instructions">
-        <p>{{ questionPaper.time }}</p>
-        <p>{{ questionPaper.note }}</p>
+        <p>Time: {{ questionPaper.time }}</p>
+        <p>Notes: {{ questionPaper.note }}</p>
         <p>Max. Marks: {{ questionPaper.maxMarks }}</p>
       </div>
-
+    </div>
     </div>
       <div class="questions">
         <table class="question-table">

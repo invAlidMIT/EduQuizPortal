@@ -3,6 +3,7 @@
   width: 800px;
   margin: 0 auto;
   padding: 10px;
+
 }
 
 .header {
@@ -74,4 +75,11 @@
 .college-logo{
   width: 120px;
   height: 120px;
+}
+
+.headings{
+  border: 1px solid black;
+  width: 110%;
+  padding: 10px 10px 10px 10px;
+  margin-bottom: 5px;
 }
